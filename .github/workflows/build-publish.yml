@@ -1,4 +1,4 @@
-name: Build Test & Deploy
+name: Build and Publish
 
 on:
   push:
@@ -36,11 +36,11 @@ jobs:
         dotnet build --configuration Release --no-restore /p:Version="${{ steps.gitversion.outputs.assemblySemVer }}" /p:AssemblyVersion="${{ steps.gitversion.outputs.assemblySemVer }}" /p:FileVersion="${{ steps.gitversion.outputs.assemblySemFileVer }}" /p:InformationalVersion="${{ steps.gitversion.outputs.informationalVersion }}" /p:PackageVersion="${{ steps.gitversion.outputs.nuGetVersion }}" /p:ContinuousIntegrationBuild=true
 
     - name: Test
-      run: dotnet test --no-build --no-restore --verbosity normal '--logger trx --collect:"XPlat Code Coverage"
+      run: dotnet test --configuration Release --no-build --no-restore --verbosity normal '--logger trx --collect:"XPlat Code Coverage"
 
     - name: Pack nuget
       run: |
-         dotnet pack --no-build --no-restore -c Release --include-symbols --output ./.pack --verbosity normal 
+         dotnet pack --configuration Release --no-build --no-restore --include-symbols --output ./.pack --verbosity normal 
 
     - name: Nuget Push
       run: |
