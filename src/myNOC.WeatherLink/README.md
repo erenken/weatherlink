@@ -1,3 +1,5 @@
+[![Release](https://github.com/erenken/weatherlink/actions/workflows/build-publish.yml/badge.svg?branch=main)](https://github.com/erenken/weatherlink/actions/workflows/build-publish.yml)
+
 # myNOC.WeatherLink
 
 ## Overview

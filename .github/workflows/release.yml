@@ -1,4 +1,4 @@
-name: Build and Publish
+name: Release
 
 on:
   push:
@@ -19,6 +19,7 @@ jobs:
         versionSpec: '5.x'
 
     - name: Determine Version
+      id: gitversion
       uses: gittools/actions/gitversion/execute@v0.9.7
       with:
         useConfigFile: true        
@@ -47,7 +48,7 @@ jobs:
         dotnet nuget push "./.pack/*nugpk;./pack/*.snupkg" --source https://api.nuget.org/v3/index.json
         --api-key ${{ secrets.NUGET_PUBLISH }} --skip-duplicate
 
-    - name: Tag Version
-      run: |
-            git tag ${{ steps.gitversion.outputs.nuGetVersion }}
-            git push origin ${{ steps.gitversion.outputs.nuGetVersion }}
+    - name: Create Release
+      uses: actions/create-release@v1
+      with:
+          tag_name: ${{ steps.gitversion.outputs.SemVer }}
