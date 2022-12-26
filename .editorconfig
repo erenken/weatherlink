@@ -1,0 +1,43 @@
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+
+[*.{cs,vb}]
+# Naming rules
+dotnet_naming_rule.const_should_be_upper_case.severity = warning
+dotnet_naming_rule.const_should_be_upper_case.symbols = const
+dotnet_naming_rule.const_should_be_upper_case.style = upper_case
+
+dotnet_naming_rule.private_fields_start_with_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_start_with_underscore.style = starts_with_underscore
+dotnet_naming_rule.private_fields_start_with_underscore.severity = warning
+
+# Symbol specifications
+dotnet_naming_symbols.const.applicable_kinds = field
+dotnet_naming_symbols.const.applicable_accessibilities = *
+dotnet_naming_symbols.const.required_modifiers = const
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+# Naming styles
+dotnet_naming_style.starts_with_underscore.capitalization = camel_case
+dotnet_naming_style.starts_with_underscore.required_prefix = _
+
+dotnet_naming_style.upper_case.required_prefix = 
+dotnet_naming_style.upper_case.required_suffix = 
+dotnet_naming_style.upper_case.word_separator = _
+dotnet_naming_style.upper_case.capitalization = all_upper
