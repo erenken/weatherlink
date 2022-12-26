@@ -23,5 +23,9 @@ jobs:
       run: dotnet build --configuration Release --no-restore
 
     - name: Test
-      run: dotnet test --no-restore --verbosity normal '--logger trx --collect:"XPlat Code Coverage" --no-build
+      run: dotnet test --no-restore --verbosity normal --logger trx --collect:"XPlat Code Coverage" --no-build
+    
+    - name: Test Pack nuget
+      run: |
+         dotnet pack --no-build --no-restore -c Release --include-symbols --output ./.pack --verbosity normal 
       
