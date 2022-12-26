@@ -45,8 +45,8 @@ jobs:
 
     - name: Nuget Push
       run: |
-        dotnet nuget push "./.pack/*nugpk;./pack/*.snupkg" --source https://api.nuget.org/v3/index.json
-        --api-key ${{ secrets.NUGET_PUBLISH }} --skip-duplicate
+         dotnet nuget push "**/*.nupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_PUBLISH }} --skip-duplicate
+         dotnet nuget push "**/*.snupkg" --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_PUBLISH }} --skip-duplicate
 
     - name: Create Release
       uses: actions/create-release@v1
