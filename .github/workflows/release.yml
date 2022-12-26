@@ -39,7 +39,7 @@ jobs:
 
     - name: Pack nuget
       run: |
-         dotnet pack --configuration Release --no-build --no-restore --include-symbols --output ./.pack --verbosity normal 
+         dotnet pack --configuration Release --no-build --no-restore --include-symbols --output ./.pack --verbosity normal -p:PackageVersion="${{ steps.gitversion.outputs.nuGetVersion }}"
 
     - name: Nuget Push
       run: |
@@ -51,7 +51,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: v${{ steps.gitversion.outputs.SemVer }}
-        release_name: v${{ steps.gitversion.outputs.SemVer }}
+        tag_name: v${{ steps.gitversion.outputs.nuGetVersion }}
+        release_name: v${{ steps.gitversion.outputs.nuGetVersion }}
         draft: false
         prerelease: true
