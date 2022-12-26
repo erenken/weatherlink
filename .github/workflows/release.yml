@@ -1,9 +1,10 @@
 name: Release
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: [Build and Test]
+    types:
+      - completed
 
 jobs:
   build:
@@ -47,5 +48,10 @@ jobs:
 
     - name: Create Release
       uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          tag_name: ${{ steps.gitversion.outputs.SemVer }}
+        tag_name: v${{ steps.gitversion.outputs.SemVer }}
+        release_name: v${{ steps.gitversion.outputs.SemVer }}
+        draft: false
+        prerelease: true
