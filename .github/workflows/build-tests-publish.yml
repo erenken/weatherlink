@@ -1,0 +1,53 @@
+name: Build and Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0.9.7
+      with:
+        versionSpec: '5.x'
+
+    - name: Determine Version
+      uses: gittools/actions/gitversion/execute@v0.9.7
+      with:
+        useConfigFile: true        
+
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 7.x
+
+    - name: Install dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: |
+        dotnet build --configuration Release --no-restore /p:Version="${{ steps.gitversion.outputs.assemblySemVer }}" /p:AssemblyVersion="${{ steps.gitversion.outputs.assemblySemVer }}" /p:FileVersion="${{ steps.gitversion.outputs.assemblySemFileVer }}" /p:InformationalVersion="${{ steps.gitversion.outputs.informationalVersion }}" /p:PackageVersion="${{ steps.gitversion.outputs.nuGetVersion }}" /p:ContinuousIntegrationBuild=true
+
+    - name: Test
+      run: dotnet test --no-build --no-restore --verbosity normal '--logger trx --collect:"XPlat Code Coverage"
+
+    - name: Pack nuget
+      run: |
+         dotnet pack --no-build --no-restore -c Release --include-symbols --output ./.pack --verbosity normal 
+
+    - name: Nuget Push
+      run: |
+        dotnet nuget push "./.pack/*nugpk;./pack/*.snupkg" --source https://api.nuget.org/v3/index.json
+        --api-key ${{ secrets.NUGET_PUBLISH }} --skip-duplicate
+
+    - name: Tag Version
+      run: |
+            git tag ${{ steps.gitversion.outputs.nuGetVersion }}
+            git push origin ${{ steps.gitversion.outputs.nuGetVersion }}
