@@ -3,11 +3,12 @@ using Microsoft.Extensions.Logging;
 using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Resolvers;
+using myNOC.WeatherLink.Sensors;
 
 namespace myNOC.Tests.WeatherLink
 {
 	[TestClass]
-	public class ServiceCollectionExtensionsTests
+	public class IServiceCollectionExtensionsTests
 	{
 		private IServiceCollection _services = default!;
 		private IServiceProvider _serviceProvider = default!;
@@ -61,12 +62,18 @@ namespace myNOC.Tests.WeatherLink
 			var apiRepository = _serviceProvider.GetService<IAPIRepository>();
 			var sdk = _serviceProvider.GetService<IClient>();
 			var apiHttpClient = _serviceProvider.GetService<IAPIHttpClient>();
+			var sensorFactory = _serviceProvider.GetService<ISensorFactory>();
+			var sensors = _serviceProvider.GetServices<ISensor>()?.ToList();
 
 			//	Assert
 			Assert.IsNotNull(apiSignatureResolver);
 			Assert.IsNotNull(apiRepository);
 			Assert.IsNotNull(sdk);
 			Assert.IsNotNull(apiHttpClient);
+			Assert.IsNotNull(sensorFactory);
+
+			Assert.IsNotNull(sensors);
+			Assert.IsTrue(sensors.Any());
 		}
 	}
 }
