@@ -31,9 +31,6 @@ namespace myNOC.WeatherLink.Resolvers
 				{ "t", _timeStamp.UnixTimeInSeconds }
 			};
 
-			if (!string.IsNullOrEmpty(_apiContext.StationId))
-				sortedParams.Add("station-id", _apiContext.StationId);
-
 			if (parameters != null)
 			{
 				foreach (var param in parameters)

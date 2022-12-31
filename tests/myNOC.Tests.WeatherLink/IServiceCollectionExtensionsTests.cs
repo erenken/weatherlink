@@ -3,11 +3,14 @@ using Microsoft.Extensions.Logging;
 using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Resolvers;
+using myNOC.WeatherLink.Sensors;
+using myNOC.WeatherLink.Sensors.Data;
+using myNOC.WeatherLink.Utilities;
 
 namespace myNOC.Tests.WeatherLink
 {
 	[TestClass]
-	public class ServiceCollectionExtensionsTests
+	public class IServiceCollectionExtensionsTests
 	{
 		private IServiceCollection _services = default!;
 		private IServiceProvider _serviceProvider = default!;
@@ -57,16 +60,27 @@ namespace myNOC.Tests.WeatherLink
 			_serviceProvider = _services.BuildServiceProvider();
 
 			//	Act
-			var apiSignatureResolver = _serviceProvider.GetService<IAPIQueryStringResolver>();
-			var apiRepository = _serviceProvider.GetService<IAPIRepository>();
-			var sdk = _serviceProvider.GetService<IClient>();
+			var apiContext = _serviceProvider.GetService<IAPIContext>();
+			var timestamp = _serviceProvider.GetService<ITimeStamp>();
+			var apiQueryStringResolver = _serviceProvider.GetService<IAPIQueryStringResolver>();
 			var apiHttpClient = _serviceProvider.GetService<IAPIHttpClient>();
+			var sensorFactory = _serviceProvider.GetService<ISensorFactory>();
+
+			var apiRepository = _serviceProvider.GetService<IAPIRepository>();
+			var client = _serviceProvider.GetService<IClient>();
+			var sensors = _serviceProvider.GetServices<ISensorData>()?.ToList();
 
 			//	Assert
-			Assert.IsNotNull(apiSignatureResolver);
-			Assert.IsNotNull(apiRepository);
-			Assert.IsNotNull(sdk);
+			Assert.IsNotNull(apiContext);
+			Assert.IsNotNull(timestamp);
+			Assert.IsNotNull(apiQueryStringResolver);
 			Assert.IsNotNull(apiHttpClient);
+			Assert.IsNotNull(sensorFactory);
+
+			Assert.IsNotNull(apiRepository);
+			Assert.IsNotNull(client);
+			Assert.IsNotNull(sensors);
+			Assert.IsTrue(sensors.Any());
 		}
 	}
 }
