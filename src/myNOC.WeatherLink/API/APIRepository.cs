@@ -1,9 +1,8 @@
+using myNOC.WeatherLink.JsonConverters;
 using myNOC.WeatherLink.Resolvers;
-using System.Net;
-using System.Net.Http.Json;
+using myNOC.WeatherLink.Sensors;
 using System.Text;
 using System.Text.Json;
-using System.Text.Json.Nodes;
 using System.Web;
 
 namespace myNOC.WeatherLink.API
@@ -12,26 +11,30 @@ namespace myNOC.WeatherLink.API
 	{
 		private readonly IAPIHttpClient _apiHttpClient;
 		private readonly IAPIQueryStringResolver _apiQueryStringResolver;
+		private readonly ISensorFactory _sensorFactory;
 
-		public APIRepository(IAPIHttpClient apiHttpClient, IAPIQueryStringResolver apiQueryStringResolver)
+		public APIRepository(
+			IAPIHttpClient apiHttpClient,
+			IAPIQueryStringResolver apiQueryStringResolver,
+			ISensorFactory sensorFactory
+			)
 		{
 			_apiHttpClient = apiHttpClient;
 			_apiQueryStringResolver = apiQueryStringResolver;
+			_sensorFactory = sensorFactory;
 		}
 
-		public async Task<T?> GetData<T>(string endPoint, IEnumerable<KeyValuePair<string, string>>? parameters = null, IEnumerable<string>? calculateOnly = null) where T : IResponse
+		public async Task<T?> GetData<T>(string endPoint, IEnumerable<KeyValuePair<string, string>>? parameters = null, IEnumerable<string>? excludeFromUrl = null) where T : IResponse
 		{
-			var response = await CallWeatherLink(endPoint, parameters, calculateOnly);
-			return JsonSerializer.Deserialize<T>(response);
+			var response = await CallWeatherLink(endPoint, parameters, excludeFromUrl);
+
+			JsonSerializerOptions options = new();
+			options.Converters.Add(new SensorJsonConverter(_sensorFactory));
+
+			return JsonSerializer.Deserialize<T>(response, options);
 		}
 
-		public async Task<JsonNode?> GetData(string endPoint, IEnumerable<KeyValuePair<string, string>>? parameters = null, IEnumerable<string>? calculateOnly = null)
-		{
-			var response = await CallWeatherLink(endPoint, parameters, calculateOnly);
-			return JsonNode.Parse(response);
-		}
-
-		private async Task<string> CallWeatherLink(string endPoint, IEnumerable<KeyValuePair<string, string>>? parameters = null, IEnumerable<string>? calculateOnly = null)
+		private async Task<string> CallWeatherLink(string endPoint, IEnumerable<KeyValuePair<string, string>>? parameters = null, IEnumerable<string>? excludeFromUrl = null)
 		{
 			var sortedParameters = _apiQueryStringResolver.Build(parameters);
 
@@ -40,7 +43,7 @@ namespace myNOC.WeatherLink.API
 
 			if (sortedParameters != null)
 			{
-				foreach (var param in sortedParameters.Where(x => !calculateOnly?.Contains(x.Key) ?? true))
+				foreach (var param in sortedParameters.Where(x => !excludeFromUrl?.Contains(x.Key) ?? true))
 					queryBuilder.Append($"{param.Key}={HttpUtility.UrlEncode(param.Value)}&");
 			}
 

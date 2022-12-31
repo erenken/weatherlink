@@ -1,11 +1,8 @@
-namespace myNOC.WeatherLink.Sensors
+namespace myNOC.WeatherLink.Sensors.Data
 {
-	public class DavisVantagePro2Plus : Sensor
+	public class DavisVantagePro2Plus : SensorData
 	{
-		public DavisVantagePro2Plus() : base(sensorType: 46)
-		{
-		}
-
+		public DavisVantagePro2Plus() : base(sensorType: 46) { }
 		public int rx_state { get; set; }
 		public int wind_speed_hi_last_2_min { get; set; }
 		public float hum { get; set; }

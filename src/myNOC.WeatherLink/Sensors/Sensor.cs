@@ -1,22 +1,21 @@
-using System.Text.Json.Nodes;
+using myNOC.WeatherLink.Sensors.Data;
 using System.Text.Json.Serialization;
 
 namespace myNOC.WeatherLink.Sensors
 {
-	public abstract class Sensor : ISensor
+	public class Sensor : ISensor
 	{
-		private readonly int _sensorType;
-
-		public Sensor(int sensorType)
-		{
-			_sensorType = sensorType;
-		}
-
 		[JsonPropertyName("lsid")]
 		public int Id { get; set; }
 		[JsonPropertyName("sensor_type")]
-		public int Type => _sensorType;
+		public int Type { get; set; }
 		[JsonPropertyName("data_structure_type")]
 		public int DataStructure { get; set; }
+	}
+
+	public class Sensor<T> : Sensor, ISensor<T> where T : ISensorData
+	{
+		[JsonPropertyName("data")]
+		public IEnumerable<T>? Data { get; set; }
 	}
 }

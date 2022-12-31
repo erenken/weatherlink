@@ -1,4 +1,5 @@
 using myNOC.WeatherLink.API;
+using myNOC.WeatherLink.Extensions;
 using myNOC.WeatherLink.Models;
 
 namespace myNOC.WeatherLink
@@ -19,16 +20,13 @@ namespace myNOC.WeatherLink
 
 		public async Task<Current?> GetCurrent(int stationId)
 		{
-			var parameters = new Dictionary<string, string>
-			{
-				{ "station-id", stationId.ToString() }
-			};
+			var parameters = new Dictionary<string, string>();
+			var stationIdKey = parameters.AddStationId(stationId);
 
-			var calculateOnly = new string[] { "station-id" };
+			var excludeFromUrl = new string[] { stationIdKey };
 
-			var jsonNode = await _apiRepository.GetData($"current/{stationId}", parameters, calculateOnly);
-
-			return new Current();
+			var current = await _apiRepository.GetData<Current>($"current/{stationId}", parameters, excludeFromUrl);
+			return current;
 		}
 	}
 }

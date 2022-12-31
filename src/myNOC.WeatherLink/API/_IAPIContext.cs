@@ -4,6 +4,5 @@ namespace myNOC.WeatherLink.API
 	{
 		string APIKey { get; set; }
 		string APISecret { get; set; }
-		string? StationId { get; set; }
 	}
 }

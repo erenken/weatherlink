@@ -5,10 +5,10 @@ namespace myNOC.WeatherLink.Models
 {
 	public class Current : IResponse
 	{
-		[JsonPropertyName("stationId")]
+		[JsonPropertyName("station_id")]
 		public int StationId { get; set; }
 		[JsonPropertyName("sensors")]
-		public IEnumerable<Sensor>? Sensors { get; set;}
+		public IEnumerable<Sensor> Sensors { get; set; } = default!;
 		[JsonPropertyName("generated_at")]
 		public int UnixGeneratedAt { get; set; }
 		public DateTimeOffset GeneratedAt { get => DateTimeOffset.FromUnixTimeSeconds(UnixGeneratedAt); }

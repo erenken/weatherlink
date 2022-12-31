@@ -1,6 +1,7 @@
 using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Resolvers;
+using myNOC.WeatherLink.Sensors;
 using NSubstitute;
 using System.Net;
 using System.Text.Json;
@@ -11,6 +12,7 @@ namespace myNOC.Tests.WeatherLink.API
 	public class APIRepositoryTests
 	{
 		private IAPIHttpClient _apiHttpClient = Substitute.For<IAPIHttpClient>();
+		private ISensorFactory _sensorFactory = Substitute.For<ISensorFactory>();
 		private IAPIQueryStringResolver _apiQueryStringResolver = Substitute.For<IAPIQueryStringResolver>();
 		private MockHttpMessageHandler _httpMessageHandler = Substitute.ForPartsOf<MockHttpMessageHandler>();
 
@@ -22,39 +24,8 @@ namespace myNOC.Tests.WeatherLink.API
 			_apiHttpClient.BaseUri.Returns("https://localhost/v2");
 			_apiHttpClient.GetHttpClient().Returns(new HttpClient(_httpMessageHandler));
 
-			_apiRepository = new APIRepository(_apiHttpClient, _apiQueryStringResolver);
+			_apiRepository = new APIRepository(_apiHttpClient, _apiQueryStringResolver, _sensorFactory);
 		}
-
-		[TestMethod]
-		public async Task GetData_ForTypeHttpOK_ReturnsJsonNode()
-		{
-			//	Assembly
-			WeatherStation getDataTypeResponse = new()
-			{
-				Name = "KMINILES3",
-				Description = "Weather Station",
-				Type = "Davis Vantage Pro 2"
-			};
-
-			var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.OK)
-			{
-				Content = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))
-			};
-
-			_httpMessageHandler.MockSend(Arg.Any<HttpRequestMessage>(), Arg.Any<CancellationToken>()).Returns(httpRequestMessage);
-
-			//	Act
-			var result = await _apiRepository.GetData("stations");
-
-			//	Assert
-			Assert.IsNotNull(result);
-			Assert.AreEqual(getDataTypeResponse.Name, result["Name"]!.GetValue<string>());
-			Assert.AreEqual(getDataTypeResponse.Description, result["Description"]!.GetValue<string>());
-			Assert.AreEqual(getDataTypeResponse.Type, result["Type"]!.GetValue<string>());
-
-			_httpMessageHandler.Received().MockSend(Arg.Is<HttpRequestMessage>(r => r.RequestUri!.ToString().Equals("https://localhost/v2/stations?")), Arg.Any<CancellationToken>());
-		}
-
 
 		[TestMethod]
 		public async Task GetData_Generic_ForTypeHttpOK_ReturnsType()

@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Resolvers;
 using myNOC.WeatherLink.Sensors;
+using myNOC.WeatherLink.Sensors.Data;
 using myNOC.WeatherLink.Utilities;
 using System.Reflection;
 
@@ -25,7 +26,7 @@ namespace myNOC.WeatherLink
 
 			services.AddScoped<IAPIRepository, APIRepository>();
 			services.AddScoped<IClient, Client>();
-			services.AddAllScoped(typeof(ISensor));
+			services.AddAllScoped(typeof(ISensorData));
 
 			return services;
 		}

@@ -20,7 +20,6 @@ namespace myNOC.Tests.WeatherLink.API
 		{
 			_apiContext.APIKey.Returns("testKey");
 			_apiContext.APISecret.Returns("testSecret");
-			_apiContext.StationId.Returns("testStationId");
 
 			_timeStamp.UnixTimeInSeconds.Returns("1671769055");
 
@@ -38,8 +37,8 @@ namespace myNOC.Tests.WeatherLink.API
 
 			//	Assert
 			Assert.IsTrue(apiSignature.Length > 20);
-			Assert.AreEqual("7d62c14f49db39abeaac31ffc03572d3bb4ceaf919a823f45408d5fb05e3b836", apiSignature);
-			Assert.AreEqual(4, sortedParmeters.Count);
+			Assert.AreEqual("068ad40427fe1cd98bc1f8ec5404a06db132ec279d7eb6a801887ef320d32a5d", apiSignature);
+			Assert.AreEqual(3, sortedParmeters.Count);
 		}
 	}
 }
