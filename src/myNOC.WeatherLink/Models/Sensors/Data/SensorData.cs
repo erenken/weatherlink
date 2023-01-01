@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace myNOC.WeatherLink.Sensors.Data
 {
 	public abstract class SensorData : ISensorData
@@ -10,7 +8,6 @@ namespace myNOC.WeatherLink.Sensors.Data
 			Description = description;
 		}
 
-		[JsonIgnore]
 		public int Type { get; private set; }
 
 		public string Description { get; private set; }

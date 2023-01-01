@@ -1,4 +1,6 @@
+using Microsoft.Extensions.Logging;
 using myNOC.WeatherLink.API;
+using myNOC.WeatherLink.JsonConverters;
 using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Resolvers;
 using myNOC.WeatherLink.Responses;
@@ -12,9 +14,11 @@ namespace myNOC.Tests.WeatherLink.API
 	public class APIRepositoryTests
 	{
 		private IAPIHttpClient _apiHttpClient = Substitute.For<IAPIHttpClient>();
-		private ISensorFactory _sensorFactory = Substitute.For<ISensorFactory>();
 		private IAPIQueryStringResolver _apiQueryStringResolver = Substitute.For<IAPIQueryStringResolver>();
+		private ILogger<APIRepository> _logger = Substitute.For<ILogger<APIRepository>>();
 		private MockHttpMessageHandler _httpMessageHandler = Substitute.ForPartsOf<MockHttpMessageHandler>();
+		private ISensorFactory _sensorFactory = Substitute.For<ISensorFactory>();
+		private SensorJsonConverterFactory _sensorJsonConverterFactory = default!;
 
 		private IAPIRepository _apiRepository = default!;
 
@@ -24,7 +28,9 @@ namespace myNOC.Tests.WeatherLink.API
 			_apiHttpClient.BaseUri.Returns("https://localhost/v2");
 			_apiHttpClient.GetHttpClient().Returns(new HttpClient(_httpMessageHandler));
 
-			_apiRepository = new APIRepository(_apiHttpClient, _apiQueryStringResolver, _sensorFactory);
+			_sensorJsonConverterFactory = Substitute.ForPartsOf<SensorJsonConverterFactory>(_sensorFactory);
+
+			_apiRepository = new APIRepository(_apiHttpClient, _apiQueryStringResolver, _sensorJsonConverterFactory, _logger);
 		}
 
 		[TestMethod]

@@ -12,13 +12,13 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 	[TestClass]
 	public class SensorJsonConverterTests
 	{
-		private SensorJsonConverter _sensorJsonConverter = default!;
+		private SensorJsonConverterFactory _sensorJsonConverterFactory = default!;
 		private ISensorFactory _sensorFactory = Substitute.For<ISensorFactory>();
 
 		[TestInitialize]
 		public void TestInit()
 		{
-			_sensorJsonConverter = new SensorJsonConverter(_sensorFactory);
+			_sensorJsonConverterFactory = new SensorJsonConverterFactory(_sensorFactory);
 		}
 
 		[TestMethod]
@@ -28,7 +28,7 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 			var typeToConvert = typeof(Sensor);
 
 			//	Act
-			var result = _sensorJsonConverter.CanConvert(typeToConvert);
+			var result = _sensorJsonConverterFactory.CanConvert(typeToConvert);
 
 			//	Assert
 			Assert.IsTrue(result);
@@ -41,7 +41,7 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 			var typeToConvert = typeof(CurrentResponse);
 
 			//	Act
-			var result = _sensorJsonConverter.CanConvert(typeToConvert);
+			var result = _sensorJsonConverterFactory.CanConvert(typeToConvert);
 
 			//	Assert
 			Assert.IsFalse(result);
@@ -54,7 +54,7 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 			var currentWeatherJson = Encoding.UTF8.GetString(Properties.Resources.CurrentWeather);
 
 			JsonSerializerOptions options = new();
-			options.Converters.Add(new SensorJsonConverter(_sensorFactory));
+			options.Converters.Add(_sensorJsonConverterFactory);
 
 			_sensorFactory.GetSensorType(Arg.Is(46)).Returns(typeof(DavisVantagePro2Plus));
 			_sensorFactory.GetSensorType(Arg.Is(323)).Returns(typeof(AirLink));

@@ -1,9 +1,11 @@
+using Microsoft.Extensions.Logging;
 using myNOC.WeatherLink.JsonConverters;
-using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Resolvers;
 using myNOC.WeatherLink.Responses;
+using System;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Web;
 
 namespace myNOC.WeatherLink.API
@@ -12,25 +14,30 @@ namespace myNOC.WeatherLink.API
 	{
 		private readonly IAPIHttpClient _apiHttpClient;
 		private readonly IAPIQueryStringResolver _apiQueryStringResolver;
-		private readonly ISensorFactory _sensorFactory;
+		private readonly ILogger<APIRepository> _logger;
+		private readonly SensorJsonConverterFactory _sensorJsonConverterFactory;
 
 		public APIRepository(
 			IAPIHttpClient apiHttpClient,
 			IAPIQueryStringResolver apiQueryStringResolver,
-			ISensorFactory sensorFactory
+			SensorJsonConverterFactory sensorJsonConverterFactory,
+			ILogger<APIRepository> logger
 			)
 		{
 			_apiHttpClient = apiHttpClient;
 			_apiQueryStringResolver = apiQueryStringResolver;
-			_sensorFactory = sensorFactory;
+			_sensorJsonConverterFactory = sensorJsonConverterFactory;
+			_logger = logger;
 		}
 
 		public async Task<T?> GetData<T>(string endPoint, IEnumerable<KeyValuePair<string, string>>? parameters = null, IEnumerable<string>? excludeFromUrl = null) where T : IResponse
 		{
+			_logger.LogInformation($"Calling GetData on endpoint: {endPoint}");
 			var response = await CallWeatherLink(endPoint, parameters, excludeFromUrl);
+			_logger.LogInformation($"Response: {response}");
 
 			JsonSerializerOptions options = new();
-			options.Converters.Add(new SensorJsonConverter(_sensorFactory));
+			options.Converters.Add(_sensorJsonConverterFactory!);
 
 			return JsonSerializer.Deserialize<T>(response, options);
 		}
@@ -52,6 +59,8 @@ namespace myNOC.WeatherLink.API
 			string path = baseUri.AbsolutePath.TrimEnd('/');
 
 			var uri = new Uri(baseUri, $"{path}/{endPoint}?{queryBuilder}");
+			_logger.LogInformation($"Calling API Uri: {uri}");
+
 			var response = await httpClient.GetAsync(uri);
 			response.EnsureSuccessStatusCode();
 
