@@ -1,4 +1,4 @@
-using myNOC.WeatherLink.Sensors;
+using myNOC.WeatherLink.Models.Sensors;
 using System.Text.Json.Serialization;
 
 namespace myNOC.WeatherLink.Models
@@ -8,9 +8,9 @@ namespace myNOC.WeatherLink.Models
 		[JsonPropertyName("station_id")]
 		public int StationId { get; set; }
 		[JsonPropertyName("sensors")]
-		public IEnumerable<Sensor> Sensors { get; set; } = default!;
+		public IEnumerable<Sensor?> Sensors { get; set; } = default!;
 		[JsonPropertyName("generated_at")]
 		public int UnixGeneratedAt { get; set; }
-		public DateTimeOffset GeneratedAt { get => DateTimeOffset.FromUnixTimeSeconds(UnixGeneratedAt); }
+		public DateTimeOffset GeneratedAt => DateTimeOffset.FromUnixTimeSeconds(UnixGeneratedAt);
 	}
 }

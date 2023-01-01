@@ -1,12 +1,12 @@
 using myNOC.WeatherLink.JsonConverters;
 using myNOC.WeatherLink.Models;
-using myNOC.WeatherLink.Sensors;
+using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Sensors.Data;
 using NSubstitute;
 using System.Text;
 using System.Text.Json;
 
-namespace myNOC.Tests.WeatherLink.Converters
+namespace myNOC.Tests.WeatherLink.JsonConverters
 {
 	[TestClass]
 	public class SensorJsonConverterTests
@@ -23,8 +23,8 @@ namespace myNOC.Tests.WeatherLink.Converters
 		[TestMethod]
 		public void CanConvert_Current_ReturnsTrue()
 		{
-			//	Assembl
-		var typeToConvert = typeof(Sensor);
+			//	Assemble
+			var typeToConvert = typeof(Sensor);
 
 			//	Act
 			var result = _sensorJsonConverter.CanConvert(typeToConvert);
@@ -36,7 +36,7 @@ namespace myNOC.Tests.WeatherLink.Converters
 		[TestMethod]
 		public void CanConvert_Station_ReturnsFalse()
 		{
-			//	Assembly
+			//	Assemble
 			var typeToConvert = typeof(Current);
 
 			//	Act
@@ -49,14 +49,14 @@ namespace myNOC.Tests.WeatherLink.Converters
 		[TestMethod]
 		public void Deserialize_CurrentJson_ReturnCurrent()
 		{
-			//	Assembl
+			//	Assemble
 			var currentWeatherJson = Encoding.UTF8.GetString(Properties.Resources.CurrentWeather);
 
 			JsonSerializerOptions options = new();
 			options.Converters.Add(new SensorJsonConverter(_sensorFactory));
 
-			_sensorFactory.GetSensorType(Arg.Is<int>(46)).Returns(typeof(DavisVantagePro2Plus));
-			_sensorFactory.GetSensorType(Arg.Is<int>(323)).Returns(typeof(AirLink));
+			_sensorFactory.GetSensorType(Arg.Is(46)).Returns(typeof(DavisVantagePro2Plus));
+			_sensorFactory.GetSensorType(Arg.Is(323)).Returns(typeof(AirLink));
 
 			//	Act
 			var result = JsonSerializer.Deserialize<Current>(currentWeatherJson, options);
@@ -71,7 +71,7 @@ namespace myNOC.Tests.WeatherLink.Converters
 			var davis = result?.Sensors.FirstOrDefault(x => x?.Type == 46) as Sensor<DavisVantagePro2Plus>;
 
 			Assert.AreEqual(75, airlink?.Data?.FirstOrDefault()?.Humidity);
-			Assert.AreEqual(12.1f, davis?.Data?.FirstOrDefault()?.temp);
+			Assert.AreEqual(12.1f, davis?.Data?.FirstOrDefault()?.Temperature);
 		}
 	}
 }

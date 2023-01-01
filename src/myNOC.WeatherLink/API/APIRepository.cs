@@ -1,6 +1,6 @@
 using myNOC.WeatherLink.JsonConverters;
+using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Resolvers;
-using myNOC.WeatherLink.Sensors;
 using System.Text;
 using System.Text.Json;
 using System.Web;

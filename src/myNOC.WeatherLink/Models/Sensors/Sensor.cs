@@ -1,7 +1,7 @@
 using myNOC.WeatherLink.Sensors.Data;
 using System.Text.Json.Serialization;
 
-namespace myNOC.WeatherLink.Sensors
+namespace myNOC.WeatherLink.Models.Sensors
 {
 	public class Sensor : ISensor
 	{

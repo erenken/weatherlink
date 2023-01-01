@@ -1,7 +1,7 @@
 using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
+using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Resolvers;
-using myNOC.WeatherLink.Sensors;
 using NSubstitute;
 using System.Net;
 using System.Text.Json;
@@ -30,7 +30,7 @@ namespace myNOC.Tests.WeatherLink.API
 		[TestMethod]
 		public async Task GetData_Generic_ForTypeHttpOK_ReturnsType()
 		{
-			//	Assembly
+			//	Assemble
 			WeatherStation getDataTypeResponse = new()
 			{
 				Name = "KMINILES3",
@@ -60,7 +60,7 @@ namespace myNOC.Tests.WeatherLink.API
 		[TestMethod]
 		public async Task GetData_Generic_ForTypeWithParametersHttpOK_ReturnsType()
 		{
-			//	Assembly
+			//	Assemble
 			Dictionary<string, string> parameters = new ()
 			{
 				{ "t", "12345" },
@@ -97,7 +97,7 @@ namespace myNOC.Tests.WeatherLink.API
 		[TestMethod]
 		public async Task GetData_Generic_ForTypeWithParametersOneCalculateOnlyHttpOK_ReturnsTypeMissingParameter()
 		{
-			//	Assembly
+			//	Assemble
 			Dictionary<string, string> parameters = new()
 			{
 				{ "t", "12345" },
@@ -138,7 +138,7 @@ namespace myNOC.Tests.WeatherLink.API
 		[TestMethod]
 		public async Task GetData_Generic_ForTypeHttpBadRequest_ReturnsType()
 		{
-			//	Assembly
+			//	Assemble
 			WeatherStation getDataTypeResponse = new()
 			{
 				Name = "KMINILES3",

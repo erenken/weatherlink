@@ -26,6 +26,10 @@ namespace myNOC.WeatherLink
 			var excludeFromUrl = new string[] { stationIdKey };
 
 			var current = await _apiRepository.GetData<Current>($"current/{stationId}", parameters, excludeFromUrl);
+
+			if (current != null)
+				current.Sensors = current.Sensors.IdentifiedSensors();
+
 			return current;
 		}
 	}

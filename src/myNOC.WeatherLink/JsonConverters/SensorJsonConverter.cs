@@ -1,4 +1,4 @@
-using myNOC.WeatherLink.Sensors;
+using myNOC.WeatherLink.Models.Sensors;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 

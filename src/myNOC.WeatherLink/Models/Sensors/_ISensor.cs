@@ -1,6 +1,6 @@
 using myNOC.WeatherLink.Sensors.Data;
 
-namespace myNOC.WeatherLink.Sensors
+namespace myNOC.WeatherLink.Models.Sensors
 {
 	public interface ISensor
 	{

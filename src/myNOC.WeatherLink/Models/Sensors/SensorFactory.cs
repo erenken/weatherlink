@@ -1,3 +1,5 @@
+using myNOC.WeatherLink.Models.Sensors;
+
 namespace myNOC.WeatherLink.Sensors
 {
 	public class SensorFactory : ISensorFactory

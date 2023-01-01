@@ -1,10 +1,10 @@
-using myNOC.WeatherLink.Sensors;
+using myNOC.WeatherLink.Models.Sensors;
 
 namespace myNOC.WeatherLink.Extensions
 {
 	public static class IEnermerableExtensions
 	{
-		public static IEnumerable<Sensor> RemoveNullSensors(this IEnumerable<Sensor> sensors)
+		public static IEnumerable<Sensor> IdentifiedSensors(this IEnumerable<Sensor?> sensors)
 		{
 			foreach (var sensor in sensors)
 			{

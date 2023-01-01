@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using myNOC.WeatherLink.API;
+using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Resolvers;
 using myNOC.WeatherLink.Sensors;
 using myNOC.WeatherLink.Sensors.Data;
