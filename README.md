@@ -5,20 +5,10 @@
 
 A library for communicating with the [WeatherLink v2 API](https://weatherlink.github.io/v2-api/).
 
-## Install
+## nuget.org
 
-### Package Manager Console
+For installation instructions please to to [myNOC.WeatherLink](https://www.nuget.org/packages/myNOC.WeatherLink/) at [nuget.org](https://nuget.org).
 
-```powershell
-Install-Package myNOC.WeatherLink -Version 1.0.0
-```
-
-### .NET CLI Console
-
-```dos
-dotnet add package myNOC.WeatherLink --version 1.0.0
-```
-
-## Documentation
+## Documentation & Usage
 
 The documentation for the library can be found [here](./src/myNOC.WeatherLink/README.md).
