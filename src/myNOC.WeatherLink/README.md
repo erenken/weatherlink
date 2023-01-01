@@ -16,7 +16,13 @@ services.AddWeatherLink();
 
 > `AddWeatherLink` has an overload to either add the `IAPIContext` as a singled or scoped.  The default is that it is added as a singleton.
 
-In my [sample console application](../../samples/SampleConsoleApp/) I am just using `IServiceProvider` and `GetService<>` to get the instances of the objects I need.
+You will need to setup `ILogger` in your project as the `APIRepository` uses it to log the API Uri and the response.
+
+```csharp
+services.AddLogging(options => options.AddConsole());
+```
+
+In my [sample console application](https://github.com/erenken/weatherlink/tree/main/samples) I am just using `IServiceProvider` and `GetService<>` to get the instances of the objects I need.
 
 Before using `IClient` you will need to setup the `BaseUri`, `APIKey`, and `APISecret` needed to access the WeatherLink v2 API.
 
@@ -90,7 +96,8 @@ Once you have your `station_id` you can then pass that into the `GetCurrent` met
 var apiClient = serviceProvider.GetService<IClient>()!;
 var current = await apiClient.GetCurrent(stationId);
 ```
-This will return `CurrentResponse` which includes a property `Sensors` of `IEnumerable<Sensor>`.  This is the base of what really gets returned `IEnumerable<Sensor<T>>`, and those contain `Data` of `IEnumerable<T>`.
+
+This will return `CurrentResponse` which includes a property `Sensors` of `IEnumerable<Sensor>`.  
 
 ```json
 {
@@ -112,4 +119,15 @@ This will return `CurrentResponse` which includes a property `Sensors` of `IEnum
 }
 ```
 
-I am working on the Serilization of `Sensors`, so it will proeprtly serialize with all the data.  Currently it is only returning `Sensor` and not `Sensor<T>` which would contain the data element.
+To properly serialize the response from `GetCurrent` you will need to use the `SensorJsonConverterFactory`.
+
+```csharp
+JsonSerializerOptions options = new();
+var converterFactory = serviceProvider.GetService<SensorJsonConverterFactory>();
+options.Converters.Add(converterFactory!);
+
+var current = await apiClient.GetCurrent(stationId);
+var output = JsonSerializer.Serialize(current, options);
+```
+
+This will properly serialize all of the `Sensor<T>` data.  `Data` is of `IEnumerable<ISensorData>`.

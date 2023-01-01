@@ -1,13 +1,16 @@
 // See https://aka.ms/new-console-template for more information
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
+using myNOC.WeatherLink.JsonConverters;
 using System.Text.Json;
 
 IServiceCollection services = new ServiceCollection();
 IServiceProvider serviceProvider = default!;
 
+services.AddLogging(options => options.AddConsole());
 services.AddWeatherLink();
 serviceProvider = services.BuildServiceProvider();
 
@@ -15,8 +18,8 @@ var apiHttpClient = serviceProvider.GetService<IAPIHttpClient>()!;
 apiHttpClient.BaseUri = "https://api.weatherlink.com/v2";
 
 var apiContext = serviceProvider.GetService<IAPIContext>()!;
-apiContext.APIKey = "{yourApiKey}";
-apiContext.APISecret = "{yourApiSecret}";
+apiContext.APIKey = "{APIKey}";
+apiContext.APISecret = "{APISecret}";
 
 var apiClient = serviceProvider.GetService<IClient>()!;
 var stations = await apiClient.GetStations();
@@ -24,10 +27,14 @@ Console.WriteLine(JsonSerializer.Serialize(stations));
 
 Console.WriteLine();
 
+JsonSerializerOptions options = new();
+var converterFactory = serviceProvider.GetService<SensorJsonConverterFactory>();
+options.Converters.Add(converterFactory!);
+
 var stationId = stations!.Stations!.ToList()[0].Id;
 var current = await apiClient.GetCurrent(stationId);
-Console.WriteLine(JsonSerializer.Serialize(current));
-
+var output = JsonSerializer.Serialize(current, options);
+Console.WriteLine(output);
 
 Console.ReadLine();
 
