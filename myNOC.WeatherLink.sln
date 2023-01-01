@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myNOC.WeatherLink", "src\my
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "myNOC.Tests.WeatherLink", "tests\myNOC.Tests.WeatherLink\myNOC.Tests.WeatherLink.csproj", "{8FD35401-CCF5-4B19-A741-0D78C26911B9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{93EC18BA-F0A4-4449-9C32-1D2CDA898EC3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleConsoleApp", "samples\SampleConsoleApp\SampleConsoleApp.csproj", "{EE27C928-666E-4D95-9057-5CCB5DB499C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,10 @@ Global
 		{8FD35401-CCF5-4B19-A741-0D78C26911B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FD35401-CCF5-4B19-A741-0D78C26911B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FD35401-CCF5-4B19-A741-0D78C26911B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE27C928-666E-4D95-9057-5CCB5DB499C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE27C928-666E-4D95-9057-5CCB5DB499C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE27C928-666E-4D95-9057-5CCB5DB499C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE27C928-666E-4D95-9057-5CCB5DB499C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{7721062B-9255-4C2F-BF25-07D7960E2250} = {17D3AA63-E715-49E7-AE8C-D3516928E83C}
 		{8FD35401-CCF5-4B19-A741-0D78C26911B9} = {4A5266F2-B531-4A43-AACC-82C5ED50F3CA}
+		{EE27C928-666E-4D95-9057-5CCB5DB499C8} = {93EC18BA-F0A4-4449-9C32-1D2CDA898EC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31CC8835-50E6-4D49-84CE-864BB5FB820F}

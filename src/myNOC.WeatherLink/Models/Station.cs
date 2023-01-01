@@ -30,10 +30,10 @@ namespace myNOC.WeatherLink
 		public string MEID { get; set; } = default!;
 		[JsonPropertyName("registered_date")]
 		public int UnixRegisteredDate { get; set; }
-		public DateTimeOffset RegsisteredDate { get => DateTimeOffset.FromUnixTimeSeconds(UnixRegisteredDate); }
+		public DateTimeOffset RegsisteredDate => DateTimeOffset.FromUnixTimeSeconds(UnixRegisteredDate);
 		[JsonPropertyName("subscription_end_date")]
 		public int UnixSubscriptionEndDate { get; set; }
-		public DateTimeOffset SubscriptionEndDate { get => DateTimeOffset.FromUnixTimeSeconds(UnixSubscriptionEndDate); }
+		public DateTimeOffset SubscriptionEndDate => DateTimeOffset.FromUnixTimeSeconds(UnixSubscriptionEndDate);
 		[JsonPropertyName("time_zone")]
 		public string TimeZone { get; set; } = default!;
 		[JsonPropertyName("city")]

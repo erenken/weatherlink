@@ -1,6 +1,6 @@
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Extensions;
-using myNOC.WeatherLink.Models;
+using myNOC.WeatherLink.Responses;
 
 namespace myNOC.WeatherLink
 {
@@ -13,19 +13,23 @@ namespace myNOC.WeatherLink
 			_apiRepository = apiRepository;
 		}
 
-		public async Task<Stations?> GetStations()
+		public async Task<StationsResponse?> GetStations()
 		{
-			return await _apiRepository.GetData<Stations>("stations");
+			return await _apiRepository.GetData<StationsResponse>("stations");
 		}
 
-		public async Task<Current?> GetCurrent(int stationId)
+		public async Task<CurrentResponse?> GetCurrent(int stationId)
 		{
 			var parameters = new Dictionary<string, string>();
 			var stationIdKey = parameters.AddStationId(stationId);
 
 			var excludeFromUrl = new string[] { stationIdKey };
 
-			var current = await _apiRepository.GetData<Current>($"current/{stationId}", parameters, excludeFromUrl);
+			var current = await _apiRepository.GetData<CurrentResponse>($"current/{stationId}", parameters, excludeFromUrl);
+
+			if (current != null)
+				current.Sensors = current.Sensors.IdentifiedSensors();
+
 			return current;
 		}
 	}

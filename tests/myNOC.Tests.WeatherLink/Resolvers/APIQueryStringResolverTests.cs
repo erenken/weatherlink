@@ -7,12 +7,12 @@ using NSubstitute;
 namespace myNOC.Tests.WeatherLink.API
 {
 	[TestClass]
-	public class APISignatureResolverTests
+	public class APIQueryStringResolverTests
 	{
 		private readonly IAPIContext _apiContext = Substitute.For<IAPIContext>();
 		private readonly ILogger<APIQueryStringResolver> _logger = Substitute.For<ILogger<APIQueryStringResolver>>();
 		private readonly ITimeStamp _timeStamp = Substitute.For<ITimeStamp>();
-		private IAPIQueryStringResolver _apiSignatureResolver = default!;
+		private IAPIQueryStringResolver _apiQueryStringResolver = default!;
 
 
 		[TestInitialize]
@@ -23,7 +23,7 @@ namespace myNOC.Tests.WeatherLink.API
 
 			_timeStamp.UnixTimeInSeconds.Returns("1671769055");
 
-			_apiSignatureResolver = new APIQueryStringResolver(_apiContext, _timeStamp, _logger);
+			_apiQueryStringResolver = new APIQueryStringResolver(_apiContext, _timeStamp, _logger);
 		}
 
 		[TestMethod]
@@ -32,7 +32,7 @@ namespace myNOC.Tests.WeatherLink.API
 			//	Assemble
 
 			//	Act
-			var sortedParmeters = _apiSignatureResolver.Build();
+			var sortedParmeters = _apiQueryStringResolver.Build();
 			var apiSignature = sortedParmeters["api-signature"];
 
 			//	Assert
