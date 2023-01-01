@@ -35,11 +35,11 @@ jobs:
 
     - name: Build
       run: |
-        dotnet build .\src\myNOC.WeatherLink\myNOC.WeatherLink.csproj --configuration Release --no-restore /p:Version="${{ steps.gitversion.outputs.assemblySemVer }}" /p:AssemblyVersion="${{ steps.gitversion.outputs.assemblySemVer }}" /p:FileVersion="${{ steps.gitversion.outputs.assemblySemFileVer }}" /p:InformationalVersion="${{ steps.gitversion.outputs.informationalVersion }}" /p:PackageVersion="${{ steps.gitversion.outputs.nuGetVersion }}" /p:ContinuousIntegrationBuild=true
+        dotnet build ./src/myNOC.WeatherLink/myNOC.WeatherLink.csproj --configuration Release --no-restore /p:Version="${{ steps.gitversion.outputs.assemblySemVer }}" /p:AssemblyVersion="${{ steps.gitversion.outputs.assemblySemVer }}" /p:FileVersion="${{ steps.gitversion.outputs.assemblySemFileVer }}" /p:InformationalVersion="${{ steps.gitversion.outputs.informationalVersion }}" /p:PackageVersion="${{ steps.gitversion.outputs.nuGetVersion }}" /p:ContinuousIntegrationBuild=true
 
     - name: Pack nuget
       run: |
-         dotnet pack .\src\myNOC.WeatherLink\myNOC.WeatherLink.csproj --configuration Release --no-build --no-restore --include-symbols --output ./.pack --verbosity normal -p:PackageVersion="${{ steps.gitversion.outputs.nuGetVersion }}"
+         dotnet pack ./src/myNOC.WeatherLink/myNOC.WeatherLink.csproj --configuration Release --no-build --no-restore --include-symbols --output ./.pack --verbosity normal -p:PackageVersion="${{ steps.gitversion.outputs.nuGetVersion }}"
 
     - name: Nuget Push
       run: |
