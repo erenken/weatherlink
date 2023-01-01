@@ -1,4 +1,4 @@
-namespace myNOC.WeatherLink
+namespace myNOC.WeatherLink.Responses
 {
 	public interface IResponse
 	{

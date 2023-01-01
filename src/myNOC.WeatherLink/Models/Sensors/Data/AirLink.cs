@@ -7,7 +7,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		public AirLink() : base(sensorType: 323, "AirLink") { }
 
 		[JsonPropertyName("hum")]
-		public int Humidity { get; set; }
+		public float Humidity { get; set; }
 
 		[JsonPropertyName("pm_10_3_hour")]
 		public float PM10_3Hour { get; set; }
@@ -57,7 +57,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("pm_10_1_hour")]
 		public float PM10_1Hour { get; set; }
 		[JsonPropertyName("dew_point")]
-		public int DewPoint { get; set; }
+		public float DewPoint { get; set; }
 		[JsonPropertyName("pm_10")]
 		public float PM10 { get; set; }
 		[JsonPropertyName("pct_pm_data_1_hour")]

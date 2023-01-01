@@ -1,10 +1,10 @@
-using myNOC.WeatherLink.Models;
+using myNOC.WeatherLink.Responses;
 
 namespace myNOC.WeatherLink
 {
 	public interface IClient
 	{
-		Task<Stations?> GetStations();
-		Task<Current?> GetCurrent(int stationId);
+		Task<StationsResponse?> GetStations();
+		Task<CurrentResponse?> GetCurrent(int stationId);
 	}
 }

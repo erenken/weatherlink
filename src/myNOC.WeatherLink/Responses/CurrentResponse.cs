@@ -1,9 +1,9 @@
 using myNOC.WeatherLink.Models.Sensors;
 using System.Text.Json.Serialization;
 
-namespace myNOC.WeatherLink.Models
+namespace myNOC.WeatherLink.Responses
 {
-	public class Current : IResponse
+	public class CurrentResponse : IResponse
 	{
 		[JsonPropertyName("station_id")]
 		public int StationId { get; set; }

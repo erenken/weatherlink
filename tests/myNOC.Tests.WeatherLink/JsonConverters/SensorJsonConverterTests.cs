@@ -1,6 +1,7 @@
 using myNOC.WeatherLink.JsonConverters;
 using myNOC.WeatherLink.Models;
 using myNOC.WeatherLink.Models.Sensors;
+using myNOC.WeatherLink.Responses;
 using myNOC.WeatherLink.Sensors.Data;
 using NSubstitute;
 using System.Text;
@@ -37,7 +38,7 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 		public void CanConvert_Station_ReturnsFalse()
 		{
 			//	Assemble
-			var typeToConvert = typeof(Current);
+			var typeToConvert = typeof(CurrentResponse);
 
 			//	Act
 			var result = _sensorJsonConverter.CanConvert(typeToConvert);
@@ -59,7 +60,7 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 			_sensorFactory.GetSensorType(Arg.Is(323)).Returns(typeof(AirLink));
 
 			//	Act
-			var result = JsonSerializer.Deserialize<Current>(currentWeatherJson, options);
+			var result = JsonSerializer.Deserialize<CurrentResponse>(currentWeatherJson, options);
 
 			//	Assert
 			Assert.IsNotNull(result);

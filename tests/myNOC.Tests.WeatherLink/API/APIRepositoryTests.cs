@@ -1,7 +1,7 @@
-using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Resolvers;
+using myNOC.WeatherLink.Responses;
 using NSubstitute;
 using System.Net;
 using System.Text.Json;

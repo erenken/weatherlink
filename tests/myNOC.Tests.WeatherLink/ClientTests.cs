@@ -2,6 +2,7 @@ using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Models;
 using myNOC.WeatherLink.Models.Sensors;
+using myNOC.WeatherLink.Responses;
 using NSubstitute;
 
 namespace myNOC.Tests.WeatherLink
@@ -23,21 +24,21 @@ namespace myNOC.Tests.WeatherLink
 		{
 			//	Assemble
 			var id = 49120;
-			var stations = new Stations
+			var stationResponse = new StationsResponse
 			{
-				Station = new List<Station> { new Station { Active = true, City = "Niles", Region = "Michigan", Id = id } }
+				Stations = new List<Station> { new Station { Active = true, City = "Niles", Region = "Michigan", Id = id } }
 			};
 
-			_apiRepository.GetData<Stations>("stations").Returns(stations);
+			_apiRepository.GetData<StationsResponse>("stations").Returns(stationResponse);
 
 			//	Act
 			var result = await _client.GetStations();
 
 			//	Assert
 			Assert.IsNotNull(result);
-			Assert.AreEqual(1, result.Station?.Count());
+			Assert.AreEqual(1, result.Stations?.Count());
 
-			var station = result.Station?.ToList()[0];
+			var station = result.Stations?.ToList()[0];
 			Assert.IsNotNull(station);
 			Assert.AreEqual(id, station.Id);
 		}
@@ -47,7 +48,7 @@ namespace myNOC.Tests.WeatherLink
 		{
 			//	Assemble
 			var stationId = 49120;
-			var current = new Current
+			var currentResponse = new CurrentResponse
 			{
 				StationId = stationId,
 				Sensors = new List<Sensor?> {
@@ -58,16 +59,16 @@ namespace myNOC.Tests.WeatherLink
 				}
 			};
 
-			_apiRepository.GetData<Current>($"current/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(current);
+			_apiRepository.GetData<CurrentResponse>($"current/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(currentResponse);
 
 			//	Act
 			var result = await _client.GetCurrent(stationId);
 
 			//	Assert
 			Assert.IsNotNull(result);
-			Assert.AreEqual(2, current.Sensors.Count());
+			Assert.AreEqual(2, currentResponse.Sensors.Count());
 
-			await _apiRepository.Received().GetData<Current>($"current/{stationId}",
+			await _apiRepository.Received().GetData<CurrentResponse>($"current/{stationId}",
 				Arg.Is<IEnumerable<KeyValuePair<string, string>>?>(p => p!.FirstOrDefault(kv => kv.Key == "station-id").Value == stationId.ToString()),
 				Arg.Is<IEnumerable<string>?>(p => p!.FirstOrDefault(kv => kv == "station-id") != null));
 		}
