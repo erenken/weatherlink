@@ -4,7 +4,11 @@
 
 A library for communicating with the [WeatherLink v2 API](https://weatherlink.github.io/v2-api/).
 
-This library is initially built for my needs as I am building a new Weather Website form my station, and in the process I thought this library may be usefull to more people.
+This library is initially built for my needs as I am building a new Weather Website form my station, and in the process I thought this library may be useful to more people.
+
+## Supported Data Structures
+
+Current this only supports two [data structures](https://weatherlink.github.io/v2-api/data-structure-types).  I will be adding the WeatherLin Console soon, as I just got one.
 
 ## Setup and Configuration
 
