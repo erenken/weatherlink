@@ -24,7 +24,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("rain_size")]
 		public int? RainCupSize { get; set; }
 		[JsonPropertyName("uv_index")]
-		public int? UIndex { get; set; }
+		public int? UVIndex { get; set; }
 		[JsonPropertyName("wind_speed_last")]
 		public int? WindSpeed { get; set; }
 		[JsonPropertyName("rainfall_last_60_min_clicks")]
