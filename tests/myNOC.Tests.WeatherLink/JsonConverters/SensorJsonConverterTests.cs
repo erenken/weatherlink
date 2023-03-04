@@ -64,15 +64,15 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 
 			//	Assert
 			Assert.IsNotNull(result);
-			Assert.AreEqual(1671769064, result.UnixGeneratedAt);
-			Assert.AreEqual(88769, result.StationId);
+			Assert.AreEqual(1677903687, result.UnixGeneratedAt);
+			Assert.AreEqual(152788, result.StationId);
 			Assert.AreEqual(6, result.Sensors.Count());
 
 			var airlink = result?.Sensors.FirstOrDefault(x => x?.Type == 323) as Sensor<AirLink>;
 			var davis = result?.Sensors.FirstOrDefault(x => x?.Type == 46) as Sensor<DavisVantagePro2Plus>;
 
-			Assert.AreEqual(75, airlink?.Data?.FirstOrDefault()?.Humidity);
-			Assert.AreEqual(12.1f, davis?.Data?.FirstOrDefault()?.Temperature);
+			Assert.AreEqual(90.5f, airlink?.Data?.FirstOrDefault()?.Humidity);
+			Assert.AreEqual(32.2f, davis?.Data?.FirstOrDefault()?.Temperature);
 		}
 	}
 }
