@@ -22,9 +22,9 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("wind_dir_scalar_avg_last_10_min")]
 		public float? WindDirectionScalarAvgLast_10Min { get; set; }
 		[JsonPropertyName("rain_size")]
-		public int? RainCupSize { get; set; }
+		public float? RainCupSize { get; set; }
 		[JsonPropertyName("uv_index")]
-		public int? UVIndex { get; set; }
+		public float? UVIndex { get; set; }
 		[JsonPropertyName("wind_speed_last")]
 		public int? WindSpeed { get; set; }
 		[JsonPropertyName("rainfall_last_60_min_clicks")]
@@ -53,23 +53,23 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("rain_rate_hi_clicks")]
 		public int? RainRateHiClicks { get; set; }
 		[JsonPropertyName("rainfall_last_15_min_in")]
-		public int? RainfallLast_15Min_in { get; set; }
+		public float? RainfallLast_15Min_in { get; set; }
 		[JsonPropertyName("rainfall_daily_clicks")]
 		public int? RainfallDailyClicks { get; set; }
 		[JsonPropertyName("dew_point?")]
 		public float? DewPoint { get; set; }
 		[JsonPropertyName("rainfall_last_15_min_mm")]
-		public int? RainfallLast_15Min_mm { get; set; }
+		public float? RainfallLast_15Min_mm { get; set; }
 		[JsonPropertyName("rain_rate_hi_in")]
-		public int? RainRateHi_in { get; set; }
+		public float? RainRateHi_in { get; set; }
 		[JsonPropertyName("rain_storm_clicks")]
 		public int? RainStormClicks { get; set; }
 		[JsonPropertyName("rain_rate_hi_mm")]
-		public int? RainRateHi_mm { get; set; }
+		public float? RainRateHi_mm { get; set; }
 		[JsonPropertyName("rainfall_year_clicks")]
 		public int? RainfallYearClicks { get; set; }
 		[JsonPropertyName("rain_storm_in")]
-		public float? RainStorm_n { get; set; }
+		public float? RainStorm_in { get; set; }
 		[JsonPropertyName("rain_storm_last_end_at")]
 		public int? UnixRainStormLastEndAt { get; set; }
 		public DateTimeOffset RainStormLastEndAt => DateTimeOffset.FromUnixTimeSeconds(UnixRainStormLastEndAt ?? 0);
@@ -82,11 +82,11 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("rainfall_last_24_hr_in")]
 		public float? RainfallLast_24Hr_in { get; set; }
 		[JsonPropertyName("rainfall_last_60_min_mm")]
-		public int? RainfallLast_60Min_mm { get; set; }
+		public float? RainfallLast_60Min_mm { get; set; }
 		[JsonPropertyName("trans_battery_flag")]
 		public int? TransmitterBatteryFlag { get; set; }
 		[JsonPropertyName("rainfall_last_60_min_in")]
-		public int? RainfallLast_60Min_in { get; set; }
+		public float? RainfallLast_60Min_in { get; set; }
 		[JsonPropertyName("rain_storm_start_time")]
 		public int? UnixRainStormStartTime { get; set; }
 		public DateTimeOffset RainStormStartTime => DateTimeOffset.FromUnixTimeSeconds(UnixRainStormStartTime ?? 0);
@@ -119,7 +119,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("rainfall_monthly_in")]
 		public float? RainfallMonthly_in { get; set; }
 		[JsonPropertyName("rain_rate_last_mm")]
-		public int? RainRateLast_mm { get; set; }
+		public float? RainRateLast_mm { get; set; }
 		[JsonPropertyName("rain_rate_last_clicks")]
 		public int? RainRateLastClicks { get; set; }
 		[JsonPropertyName("rainfall_last_24_hr_clicks")]
@@ -127,11 +127,11 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("rain_storm_last_in")]
 		public float? RainStormLast_in { get; set; }
 		[JsonPropertyName("rain_rate_last_in")]
-		public int? RainRateLast_in { get; set; }
+		public float? RainRateLast_in { get; set; }
 		[JsonPropertyName("rain_rate_hi_last_15_min_mm")]
-		public int? RainRateHiLast_15Min_mm { get; set; }
+		public float? RainRateHiLast_15Min_mm { get; set; }
 		[JsonPropertyName("rain_rate_hi_last_15_min_in")]
-		public int? RainRateHiLast_15Min_in { get; set; }
+		public float? RainRateHiLast_15Min_in { get; set; }
 		[JsonPropertyName("ts")]
 		public int? UnixTimeStamp { get; set; }
 		public DateTimeOffset TimeStamp => DateTimeOffset.FromUnixTimeSeconds(UnixTimeStamp ?? 0);

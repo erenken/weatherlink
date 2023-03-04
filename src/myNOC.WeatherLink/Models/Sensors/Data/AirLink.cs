@@ -28,9 +28,9 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("pm_1")]
 		public float? PM1 { get; set; }
 		[JsonPropertyName("pct_pm_data_nowcast")]
-		public int? PercentPMDataNowCast { get; set; }
+		public float? PercentPMDataNowCast { get; set; }
 		[JsonPropertyName("pct_pm_data_24_hour")]
-		public int? PCTPMDatra_24Hour { get; set; }
+		public float? PctPMData_24Hour { get; set; }
 		[JsonPropertyName("wet_bulb")]
 		public float? WetBulb { get; set; }
 		[JsonPropertyName("aqi_val")]
@@ -42,7 +42,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("pm_2p5_3_hour")]
 		public float? PM2p5_3Hour { get; set; }
 		[JsonPropertyName("pct_pm_data_3_hour")]
-		public int? pct_pm_data_3_hour { get; set; }
+		public float? PctPMData_3Hour { get; set; }
 		[JsonPropertyName("last_report_time")]
 		public int? UnixLastReportTime { get; set; }
 		public DateTimeOffset LastReportTime => DateTimeOffset.FromUnixTimeSeconds(UnixLastReportTime ?? 0);
@@ -61,7 +61,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("pm_10")]
 		public float? PM10 { get; set; }
 		[JsonPropertyName("pct_pm_data_1_hour")]
-		public int? PCTPMData_1Hhour { get; set; }
+		public float? PctPMData_1Hhour { get; set; }
 		[JsonPropertyName("ts")]
 		public int? UnixTimeStamp { get; set; }
 		public DateTimeOffset TimeStamp => DateTimeOffset.FromUnixTimeSeconds(UnixTimeStamp ?? 0);
