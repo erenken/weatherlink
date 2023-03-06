@@ -56,7 +56,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		public float? RainfallLast_15Min_in { get; set; }
 		[JsonPropertyName("rainfall_daily_clicks")]
 		public int? RainfallDailyClicks { get; set; }
-		[JsonPropertyName("dew_point?")]
+		[JsonPropertyName("dew_point")]
 		public float? DewPoint { get; set; }
 		[JsonPropertyName("rainfall_last_15_min_mm")]
 		public float? RainfallLast_15Min_mm { get; set; }
