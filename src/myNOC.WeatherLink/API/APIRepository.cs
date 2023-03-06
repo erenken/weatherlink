@@ -32,9 +32,8 @@ namespace myNOC.WeatherLink.API
 
 		public async Task<T?> GetData<T>(string endPoint, IEnumerable<KeyValuePair<string, string>>? parameters = null, IEnumerable<string>? excludeFromUrl = null) where T : IResponse
 		{
-			_logger.LogInformation($"Calling GetData on endpoint: {endPoint}");
 			var response = await CallWeatherLink(endPoint, parameters, excludeFromUrl);
-			_logger.LogInformation($"Response: {response}");
+			_logger.LogDebug($"Response: {response}");
 
 			JsonSerializerOptions options = new();
 			options.Converters.Add(_sensorJsonConverterFactory!);
@@ -59,7 +58,7 @@ namespace myNOC.WeatherLink.API
 			string path = baseUri.AbsolutePath.TrimEnd('/');
 
 			var uri = new Uri(baseUri, $"{path}/{endPoint}?{queryBuilder}");
-			_logger.LogInformation($"Calling API Uri: {uri}");
+			_logger.LogInformation($"Calling WeatherLink API Uri: {uri}");
 
 			var response = await httpClient.GetAsync(uri);
 			response.EnsureSuccessStatusCode();
