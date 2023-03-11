@@ -1,3 +1,4 @@
+using myNOC.WeatherLink.Models.Sensors.Data;
 using myNOC.WeatherLink.Sensors.Data;
 
 namespace myNOC.WeatherLink.Models.Sensors
@@ -5,7 +6,7 @@ namespace myNOC.WeatherLink.Models.Sensors
 	public interface ISensor
 	{
 		int Id { get; set; }
-		int Type { get; set; }
+		SensorType Type { get; set; }
 		int DataStructure { get; set; }
 	}
 

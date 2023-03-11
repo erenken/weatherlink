@@ -23,7 +23,7 @@ namespace myNOC.WeatherLink
 		[JsonPropertyName("recording_interval")]
 		public int? UploadInterval { get; set; }
 		[JsonPropertyName("firmware_version")]
-		public int? FirmwareVersion { get; set; }
+		public string? FirmwareVersion { get; set; }
 		[JsonPropertyName("imei")]
 		public string? IMEI { get; set; } = default!;
 		[JsonPropertyName("meid")]

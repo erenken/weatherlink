@@ -18,8 +18,8 @@ var apiHttpClient = serviceProvider.GetService<IAPIHttpClient>()!;
 apiHttpClient.BaseUri = "https://api.weatherlink.com/v2";
 
 var apiContext = serviceProvider.GetService<IAPIContext>()!;
-apiContext.APIKey = "{APIKey}";
-apiContext.APISecret = "{APISecret}";
+apiContext.APIKey = "APIKey";
+apiContext.APISecret = "APISecret";
 
 var apiClient = serviceProvider.GetService<IClient>()!;
 var stations = await apiClient.GetStations();
@@ -37,5 +37,3 @@ var output = JsonSerializer.Serialize(current, options);
 Console.WriteLine(output);
 
 Console.ReadLine();
-
-

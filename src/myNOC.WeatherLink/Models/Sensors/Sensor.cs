@@ -1,3 +1,4 @@
+using myNOC.WeatherLink.Models.Sensors.Data;
 using myNOC.WeatherLink.Sensors.Data;
 using System.Text.Json.Serialization;
 
@@ -8,7 +9,7 @@ namespace myNOC.WeatherLink.Models.Sensors
 		[JsonPropertyName("lsid")]
 		public int Id { get; set; }
 		[JsonPropertyName("sensor_type")]
-		public int Type { get; set; }
+		public SensorType Type { get; set; }
 		[JsonPropertyName("data_structure_type")]
 		public int DataStructure { get; set; }
 	}

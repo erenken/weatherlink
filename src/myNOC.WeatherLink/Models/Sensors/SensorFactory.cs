@@ -1,4 +1,5 @@
 using myNOC.WeatherLink.Models.Sensors;
+using myNOC.WeatherLink.Models.Sensors.Data;
 using myNOC.WeatherLink.Sensors.Data;
 
 namespace myNOC.WeatherLink.Sensors
@@ -12,7 +13,7 @@ namespace myNOC.WeatherLink.Sensors
 			_sensors = sensors;
 		}
 
-		public Type? GetSensorType(int sensorType)
+		public Type? GetSensorType(SensorType sensorType)
 		{
 			return _sensors.FirstOrDefault(x => x.Type == sensorType)?.GetType();
 		}
