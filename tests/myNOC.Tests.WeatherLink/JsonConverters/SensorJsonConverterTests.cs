@@ -1,6 +1,7 @@
 using myNOC.WeatherLink.JsonConverters;
 using myNOC.WeatherLink.Models;
 using myNOC.WeatherLink.Models.Sensors;
+using myNOC.WeatherLink.Models.Sensors.Data;
 using myNOC.WeatherLink.Responses;
 using myNOC.WeatherLink.Sensors.Data;
 using NSubstitute;
@@ -56,8 +57,8 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 			JsonSerializerOptions options = new();
 			options.Converters.Add(_sensorJsonConverterFactory);
 
-			_sensorFactory.GetSensorType(Arg.Is(46)).Returns(typeof(DavisVantagePro2Plus));
-			_sensorFactory.GetSensorType(Arg.Is(323)).Returns(typeof(AirLink));
+			_sensorFactory.GetSensorType(Arg.Is(SensorType.VantagePro2Plus)).Returns(typeof(VantagePro2Plus));
+			_sensorFactory.GetSensorType(Arg.Is(SensorType.AirLink)).Returns(typeof(AirLink));
 
 			//	Act
 			var result = JsonSerializer.Deserialize<CurrentResponse>(currentWeatherJson, options);
@@ -68,8 +69,8 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 			Assert.AreEqual(152788, result.StationId);
 			Assert.AreEqual(6, result.Sensors.Count());
 
-			var airlink = result?.Sensors.FirstOrDefault(x => x?.Type == 323) as Sensor<AirLink>;
-			var davis = result?.Sensors.FirstOrDefault(x => x?.Type == 46) as Sensor<DavisVantagePro2Plus>;
+			var airlink = result?.Sensors.FirstOrDefault(x => x?.Type == SensorType.AirLink) as Sensor<AirLink>;
+			var davis = result?.Sensors.FirstOrDefault(x => x?.Type == SensorType.VantagePro2Plus) as Sensor<VantagePro2Plus>;
 
 			Assert.AreEqual(90.5f, airlink?.Data?.FirstOrDefault()?.Humidity);
 			Assert.AreEqual(32.2f, davis?.Data?.FirstOrDefault()?.Temperature);

@@ -1,10 +1,11 @@
+using myNOC.WeatherLink.Models.Sensors.Data;
 using System.Text.Json.Serialization;
 
 namespace myNOC.WeatherLink.Sensors.Data
 {
-	public class DavisVantagePro2Plus : SensorData
+	public class VantagePro2Plus : SensorData
 	{
-		public DavisVantagePro2Plus() : base(46, "Vantage Pro2 Plus /w 24-hr-Fan-Aspirated Radiation shield, UV & Solar Radiation") { }
+		public VantagePro2Plus() : base(SensorType.VantagePro2Plus, "Vantage Pro2 Plus /w 24-hr-Fan-Aspirated Radiation shield, UV & Solar Radiation") { }
 		[JsonPropertyName("rx_state")]
 		public int? RxState { get; set; }
 		[JsonPropertyName("wind_speed_hi_last_2_min")]

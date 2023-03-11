@@ -1,10 +1,11 @@
+using myNOC.WeatherLink.Models.Sensors.Data;
 using System.Text.Json.Serialization;
 
 namespace myNOC.WeatherLink.Sensors.Data
 {
 	public class AirLink : SensorData
 	{
-		public AirLink() : base(sensorType: 323, "AirLink") { }
+		public AirLink() : base(SensorType.AirLink, "AirLink") { }
 
 		[JsonPropertyName("hum")]
 		public float? Humidity { get; set; }
