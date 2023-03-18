@@ -4,6 +4,6 @@ namespace myNOC.WeatherLink.Models.Sensors
 {
 	public interface ISensorFactory
 	{
-		Type? GetSensorType(SensorType sensorType);
+		Type? GetSensorType(SensorType sensorType, DataStructureType dataStructureType);
 	}
 }

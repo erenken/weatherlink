@@ -11,7 +11,8 @@ namespace myNOC.WeatherLink.Models.Sensors
 		[JsonPropertyName("sensor_type")]
 		public SensorType Type { get; set; }
 		[JsonPropertyName("data_structure_type")]
-		public int DataStructure { get; set; }
+		public DataStructureType DataStructure { get; set; }
+		
 	}
 
 	public class Sensor<T> : Sensor, ISensor<T> where T : ISensorData

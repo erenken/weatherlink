@@ -71,7 +71,7 @@ namespace myNOC.WeatherLink.JsonConverters
 				var readerClone = reader;
 				var sensor = JsonSerializer.Deserialize<Sensor>(ref reader)!;
 
-				var sensorType = _sensorFactory.GetSensorType(sensor.Type);
+				var sensorType = _sensorFactory.GetSensorType(sensor.Type, sensor.DataStructure);
 				if (sensorType == null)
 					return null;
 

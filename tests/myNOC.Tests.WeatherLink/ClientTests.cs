@@ -4,6 +4,7 @@ using myNOC.WeatherLink.Models;
 using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Responses;
 using NSubstitute;
+using System.Collections.Generic;
 
 namespace myNOC.Tests.WeatherLink
 {
@@ -48,7 +49,7 @@ namespace myNOC.Tests.WeatherLink
 		{
 			//	Assemble
 			var stationId = 49120;
-			var currentResponse = new CurrentResponse
+			var currentResponse = new WeatherDataResponse
 			{
 				StationId = stationId,
 				Sensors = new List<Sensor?> {
@@ -59,7 +60,7 @@ namespace myNOC.Tests.WeatherLink
 				}
 			};
 
-			_apiRepository.GetData<CurrentResponse>($"current/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(currentResponse);
+			_apiRepository.GetData<WeatherDataResponse>($"current/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(currentResponse);
 
 			//	Act
 			var result = await _client.GetCurrent(stationId);
@@ -68,9 +69,106 @@ namespace myNOC.Tests.WeatherLink
 			Assert.IsNotNull(result);
 			Assert.AreEqual(2, currentResponse.Sensors.Count());
 
-			await _apiRepository.Received().GetData<CurrentResponse>($"current/{stationId}",
+			await _apiRepository.Received().GetData<WeatherDataResponse>($"current/{stationId}",
 				Arg.Is<IEnumerable<KeyValuePair<string, string>>?>(p => p!.FirstOrDefault(kv => kv.Key == "station-id").Value == stationId.ToString()),
 				Arg.Is<IEnumerable<string>?>(p => p!.FirstOrDefault(kv => kv == "station-id") != null));
+		}
+
+		[TestMethod]
+		public async Task Client_GetArchive_ReturnsHistoric()
+		{
+			//	Assemble
+			var stationId = 49120;
+			var date = new DateOnly(2023, 3, 17);
+			var historicResponse = new WeatherDataResponse
+			{
+				StationId = stationId,
+				Sensors = new List<Sensor?> {
+					new Sensor { Id = 1 },
+					new Sensor { Id = 2 },
+					null,
+					null
+				}
+			};
+
+			_apiRepository.GetData<WeatherDataResponse>($"historic/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(historicResponse);
+
+			//	Act
+			var result = await _client.GetHistoric(stationId, date);
+
+			//	Assert
+			Assert.IsNotNull(result);
+			Assert.AreEqual(2, historicResponse.Sensors.Count());
+
+			var dateTimeOffset = new DateTimeOffset(date.ToDateTime(new TimeOnly(0, 0, 0)));
+			var startTimeStamp = dateTimeOffset.ToUnixTimeSeconds().ToString();
+			var endTimeStamp = dateTimeOffset.AddDays(1).ToUnixTimeSeconds().ToString();
+
+			await _apiRepository.Received().GetData<WeatherDataResponse>($"historic/{stationId}",
+				Arg.Is<IEnumerable<KeyValuePair<string, string>>?>(p =>
+					p!.FirstOrDefault(kv => kv.Key == "station-id").Value == stationId.ToString()
+					&& p!.FirstOrDefault(kv => kv.Key == "start-timestamp").Value == startTimeStamp
+					&& p!.FirstOrDefault(kv => kv.Key == "end-timestamp").Value == endTimeStamp
+					),
+				Arg.Is<IEnumerable<string>?>(p => p!.FirstOrDefault(kv => kv == "station-id") != null));
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentException))]
+		public async Task Client_GetArchive_StartGreaterThanEnd_ThrowsException()
+		{
+			//	Assemble
+			var stationId = 49120;
+			var startDate = new DateTime(2023, 3, 17);
+			var endDate = new DateTime(2023, 3, 16);
+
+			var historicResponse = new WeatherDataResponse
+			{
+				StationId = stationId,
+				Sensors = new List<Sensor?> {
+					new Sensor { Id = 1 },
+					new Sensor { Id = 2 },
+					null,
+					null
+				}
+			};
+
+			_apiRepository.GetData<WeatherDataResponse>($"historic/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(historicResponse);
+
+			//	Act
+			var result = await _client.GetHistoric(stationId, startDate, endDate);
+
+			//	Assert
+			//	Throws Exception
+		}
+
+		[TestMethod]
+		[ExpectedException(typeof(ArgumentException))]
+		public async Task Client_GetArchive_StartEndGreaterThan24Hours_ThrowsException()
+		{
+			//	Assemble
+			var stationId = 49120;
+			var startDate = new DateTime(2023, 3, 17, 0, 0, 0);
+			var endDate = new DateTime(2023, 3, 18, 0, 0, 1);
+
+			var historicResponse = new WeatherDataResponse
+			{
+				StationId = stationId,
+				Sensors = new List<Sensor?> {
+					new Sensor { Id = 1 },
+					new Sensor { Id = 2 },
+					null,
+					null
+				}
+			};
+
+			_apiRepository.GetData<WeatherDataResponse>($"historic/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(historicResponse);
+
+			//	Act
+			var result = await _client.GetHistoric(stationId, startDate, endDate);
+
+			//	Assert
+			//	Throws Exception
 		}
 	}
 }
