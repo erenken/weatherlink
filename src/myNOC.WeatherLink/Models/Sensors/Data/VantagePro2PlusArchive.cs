@@ -8,7 +8,6 @@ namespace myNOC.WeatherLink.Sensors.Data
 	{
 		public VantagePro2PlusArchive() : base(SensorType.VantagePro2Plus, DataStructureType.ISSArchiveRecord, "Vantage Pro2 Plus /w 24-hr-Fan-Aspirated Radiation shield, UV & Solar Radiation") { }
 
-		public int? ArchInt { get; set; }
 		[HighLow, JsonPropertyName("temp_avg")]
 		public float? TemperatureAvg { get; set; }
 		[HighLow(relatedProperties: nameof(UnixTemperatureHighAt)), JsonPropertyName("temp_hi")]
@@ -46,9 +45,9 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("wet_bulb_hi_at")]
 		public int? UnixWetBulbHighAt { get; set; }
 		public DateTimeOffset WetBulbHighAt => DateTimeOffset.FromUnixTimeSeconds(UnixWetBulbHighAt ?? 0);
-		[HighLow(HighOrLow.Low, nameof(UnixWetBulbLowAt)), JsonPropertyName("wet_bulb_lo")]
+		[HighLow(HighOrLow.Low, relatedProperties: nameof(UnixWetBulbLowAt)), JsonPropertyName("wet_bulb_lo")]
 		public float? WetBulbLow { get; set; }
-		[HighLow, JsonPropertyName("wet_bulb_lo_at")]
+		[JsonPropertyName("wet_bulb_lo_at")]
 		public int? UnixWetBulbLowAt { get; set; }
 		public DateTimeOffset WetBulbLowAt => DateTimeOffset.FromUnixTimeSeconds(UnixWetBulbLowAt ?? 0);
 		[HighLow, JsonPropertyName("wind_speed_avg")]

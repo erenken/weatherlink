@@ -18,6 +18,6 @@ namespace myNOC.WeatherLink.Models.Sensors
 	public class Sensor<T> : Sensor, ISensor<T> where T : ISensorData
 	{
 		[JsonPropertyName("data")]
-		public IEnumerable<T>? Data { get; set; }
+		public List<T>? Data { get; set; }
 	}
 }

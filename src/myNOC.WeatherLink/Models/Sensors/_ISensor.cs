@@ -13,6 +13,6 @@ namespace myNOC.WeatherLink.Models.Sensors
 
 	public interface ISensor<T> : ISensor where T : ISensorData
 	{
-		IEnumerable<T>? Data { get; set; }
+		List<T>? Data { get; set; }
 	}
 }

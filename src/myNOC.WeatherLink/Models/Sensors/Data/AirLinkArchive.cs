@@ -45,7 +45,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 		[JsonPropertyName("wet_bulb_hi_at")]
 		public int? UnixWetBulbHighAt { get; set; }
 		public DateTimeOffset WetBulbHighAt => DateTimeOffset.FromUnixTimeSeconds(UnixWetBulbHighAt ?? 0);
-		[HighLow(HighOrLow.Low, nameof(UnixWetBulbLowAt)), JsonPropertyName("wet_bulb_lo")]
+		[HighLow(HighOrLow.Low, nameof(WetBulbLow)), JsonPropertyName("wet_bulb_lo")]
 		public float? WetBulbLow { get; set; }
 		[JsonPropertyName("wet_bulb_lo_at")]
 		public int? UnixWetBulbLowAt { get; set; }

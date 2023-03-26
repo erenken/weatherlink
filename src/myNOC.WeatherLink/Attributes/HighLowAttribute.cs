@@ -8,13 +8,13 @@ namespace myNOC.WeatherLink.Attributes
 
 	public class HighLowAttribute : Attribute
 	{
-		public HighLowAttribute(HighOrLow highValue = HighOrLow.High, params string[]? relatedProperties)
+		public HighLowAttribute(HighOrLow highOrLow = HighOrLow.High, params string[]? relatedProperties)
 		{
 			RelatedProperties = relatedProperties;
-			HighValue = highValue;
+			HighOrLow = highOrLow;
 		}
 
 		public string[]? RelatedProperties { get; }
-		public HighOrLow HighValue { get; }
+		public HighOrLow HighOrLow { get; }
 	}
 }
