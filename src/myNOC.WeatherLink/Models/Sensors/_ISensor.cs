@@ -1,5 +1,6 @@
 using myNOC.WeatherLink.Models.Sensors.Data;
 using myNOC.WeatherLink.Sensors.Data;
+using System.Collections;
 
 namespace myNOC.WeatherLink.Models.Sensors
 {
@@ -7,11 +8,11 @@ namespace myNOC.WeatherLink.Models.Sensors
 	{
 		int Id { get; set; }
 		SensorType Type { get; set; }
-		int DataStructure { get; set; }
+		DataStructureType DataStructure { get; set; }
 	}
 
 	public interface ISensor<T> : ISensor where T : ISensorData
 	{
-		public IEnumerable<T>? Data { get; set; }
+		List<T>? Data { get; set; }
 	}
 }

@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.JsonConverters;
 using myNOC.WeatherLink.Models.Sensors;
+using myNOC.WeatherLink.Processors;
 using myNOC.WeatherLink.Resolvers;
 using myNOC.WeatherLink.Sensors;
 using myNOC.WeatherLink.Sensors.Data;
@@ -23,8 +24,12 @@ namespace myNOC.WeatherLink
 
 			services.AddSingleton<ITimeStamp, TimeStamp>();
 			services.AddSingleton<IAPIQueryStringResolver, APIQueryStringResolver>();
+			services.AddSingleton<IObjectTypeInfoResolver, ObjectTypeInfoResolver>();
+			services.AddSingleton<IHighLowProcessor, HighLowProcessor>();
+
 			services.AddSingleton<IAPIHttpClient, APIHttpClient>();
 			services.AddSingleton<ISensorFactory, SensorFactory>();
+
 			services.AddSingleton(x => new SensorJsonConverterFactory(x.GetRequiredService<ISensorFactory>()));
 
 			services.AddScoped<IAPIRepository, APIRepository>();

@@ -5,7 +5,7 @@ namespace myNOC.WeatherLink.Sensors.Data
 {
 	public class AirLink : SensorData
 	{
-		public AirLink() : base(SensorType.AirLink, "AirLink") { }
+		public AirLink() : base(SensorType.AirLink, DataStructureType.AirLinkCurrentConditionsRecord, "AirLink") { }
 
 		[JsonPropertyName("hum")]
 		public float? Humidity { get; set; }

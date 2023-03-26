@@ -13,9 +13,9 @@ namespace myNOC.WeatherLink.Sensors
 			_sensors = sensors;
 		}
 
-		public Type? GetSensorType(SensorType sensorType)
+		public Type? GetSensorType(SensorType sensorType, DataStructureType dataStructureType)
 		{
-			return _sensors.FirstOrDefault(x => x.Type == sensorType)?.GetType();
+			return _sensors.FirstOrDefault(x => x.Type == sensorType && x.DataStructure == dataStructureType)?.GetType();
 		}
 	}
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace myNOC.WeatherLink.Extensions
 {
 	public static class IDictionaryExtensions
@@ -6,6 +8,14 @@ namespace myNOC.WeatherLink.Extensions
 		{
 			var key = "station-id";
 			dictionary.TryAdd(key, stationId.ToString());
+
+			return key;
+		}
+
+		public static string AddTimeStamp(this IDictionary<string, string> dictionary, string key, DateTime timestamp)
+		{
+			var dateTimeOffset = new DateTimeOffset(timestamp);
+			dictionary.TryAdd(key, dateTimeOffset.ToUnixTimeSeconds().ToString());
 
 			return key;
 		}

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace myNOC.WeatherLink.Responses
 {
-	public class CurrentResponse : IResponse
+	public class WeatherDataResponse : IResponse
 	{
 		[JsonPropertyName("station_id")]
 		public int StationId { get; set; }

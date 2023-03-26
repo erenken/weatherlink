@@ -8,7 +8,7 @@ This library is initially built for my needs as I am building a new Weather Webs
 
 ## Supported Data Structures
 
-Current this only supports two [data structures](https://weatherlink.github.io/v2-api/data-structure-types).  I will be adding the WeatherLin Console soon, as I just got one.
+This support Current Conditions and Archive [data structures](https://weatherlink.github.io/v2-api/data-structure-types) for WeatherLink Live ISS and AirLink.  I will be adding the WeatherLink Console soon, as I just got one.
 
 ## Setup and Configuration
 
@@ -94,6 +94,8 @@ This will return `StationResponse` which includes `Stations` of `IEnumerable<Sta
 }
 ```
 
+### Getting Current Conditions
+
 Once you have your `station_id` you can then pass that into the `GetCurrent` method to get the current sensor readings.
 
 ```csharp
@@ -101,7 +103,7 @@ var apiClient = serviceProvider.GetService<IClient>()!;
 var current = await apiClient.GetCurrent(stationId);
 ```
 
-This will return `CurrentResponse` which includes a property `Sensors` of `IEnumerable<Sensor>`.  
+This will return `WeatherDataResponse` which includes a property `Sensors` of `IEnumerable<Sensor>`.  
 
 ```json
 {
@@ -135,3 +137,16 @@ var output = JsonSerializer.Serialize(current, options);
 ```
 
 This will properly serialize all of the `Sensor<T>` data.  `Data` is of `IEnumerable<ISensorData>`.
+
+#### Deserialize
+
+If you store the data and want to `Deserialize` it back into `WeatherDataResponse` you will again need to use the `SensorJasonConverterFactory`.
+
+```csharp
+JsonSerializerOptions options = new();
+var converterFactory = serviceProvider.GetService<SensorJsonConverterFactory>();
+options.Converters.Add(converterFactory!);
+
+var storedCurrent = GetCurrentFromStorage();
+var WeatherDataResponse = JsonSerializer.Deserialize<WeatherDataResponse>(storedCurrent, options);
+```
