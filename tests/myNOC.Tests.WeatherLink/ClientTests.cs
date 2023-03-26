@@ -1,10 +1,9 @@
 using myNOC.WeatherLink;
 using myNOC.WeatherLink.API;
-using myNOC.WeatherLink.Models;
 using myNOC.WeatherLink.Models.Sensors;
+using myNOC.WeatherLink.Processors;
 using myNOC.WeatherLink.Responses;
 using NSubstitute;
-using System.Collections.Generic;
 
 namespace myNOC.Tests.WeatherLink
 {
@@ -12,12 +11,13 @@ namespace myNOC.Tests.WeatherLink
 	public class ClientTests
 	{
 		private IAPIRepository _apiRepository = Substitute.For<IAPIRepository>();
+		private IHighLowProcessor _highLowProcessor = Substitute.For<IHighLowProcessor>();
 		private IClient _client = default!;
 
 		[TestInitialize]
 		public void TestInit()
 		{
-			_client = new Client(_apiRepository);
+			_client = new Client(_apiRepository, _highLowProcessor);
 		}
 
 		[TestMethod]

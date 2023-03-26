@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using myNOC.WeatherLink;
-using myNOC.WeatherLink.Extensions;
 using myNOC.WeatherLink.JsonConverters;
+using myNOC.WeatherLink.Processors;
 using myNOC.WeatherLink.Responses;
 using System.Text;
 using System.Text.Json;
@@ -9,7 +9,7 @@ using System.Text.Json;
 namespace myNOC.Tests.WeatherLink.Extensions
 {
 	[TestClass]
-	public class WeatherDataResponseExtensionsTests
+	public class HighLowProcessorTests
 	{
 		private IServiceCollection _services = default!;
 		private IServiceProvider _serviceProvider = default!;
@@ -24,7 +24,7 @@ namespace myNOC.Tests.WeatherLink.Extensions
 		}
 
 		[TestMethod]
-		public void WeatherDataResponseExtensionsTest()
+		public void CalculateHighLowTest()
 		{
 			//	Assemble
 			var historicWeatherJson = Encoding.UTF8.GetString(Properties.Resources.HistoricWeather);
@@ -34,8 +34,10 @@ namespace myNOC.Tests.WeatherLink.Extensions
 
 			var response = JsonSerializer.Deserialize<WeatherDataResponse>(historicWeatherJson, options);
 
+			var highLowProcessor = _serviceProvider.GetRequiredService<IHighLowProcessor>();
+
 			//	Act
-			var result = response!.CalculateHighLow();
+			var result = highLowProcessor.CalculateHighLow(response!);
 
 			//	Assert
 			Assert.IsNotNull(result);

@@ -4,9 +4,10 @@ using System.Text.Json.Serialization;
 
 namespace myNOC.WeatherLink.Sensors.Data
 {
-	public class VantagePro2PlusArchive : SensorData
+	public class VantagePro2PlusArchive : SensorArchiveData
 	{
 		public VantagePro2PlusArchive() : base(SensorType.VantagePro2Plus, DataStructureType.ISSArchiveRecord, "Vantage Pro2 Plus /w 24-hr-Fan-Aspirated Radiation shield, UV & Solar Radiation") { }
+
 		public int? ArchInt { get; set; }
 		[HighLow, JsonPropertyName("temp_avg")]
 		public float? TemperatureAvg { get; set; }

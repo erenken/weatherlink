@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace myNOC.WeatherLink.Sensors.Data
 {
-	public class AirLinkArchive : SensorData
+	public class AirLinkArchive : SensorArchiveData
 	{
 		public AirLinkArchive() : base(SensorType.AirLink, DataStructureType.AirLinkArchiveRecord, "AirLink") { }
 

@@ -1,5 +1,6 @@
 using myNOC.WeatherLink.API;
 using myNOC.WeatherLink.Extensions;
+using myNOC.WeatherLink.Processors;
 using myNOC.WeatherLink.Responses;
 
 namespace myNOC.WeatherLink
@@ -7,10 +8,12 @@ namespace myNOC.WeatherLink
 	public class Client : IClient
 	{
 		private readonly IAPIRepository _apiRepository;
+		private readonly IHighLowProcessor _highLowProcessor;
 
-		public Client(IAPIRepository apiRepository)
+		public Client(IAPIRepository apiRepository, IHighLowProcessor highLowProcessor)
 		{
 			_apiRepository = apiRepository;
+			_highLowProcessor = highLowProcessor;
 		}
 
 		public async Task<StationsResponse?> GetStations()
@@ -37,7 +40,7 @@ namespace myNOC.WeatherLink
 		{
 			var timeSpan = endDateTime - startDateTime;
 			if (endDateTime < startDateTime) throw new ArgumentException($"{nameof(endDateTime)} must be greater than {nameof(startDateTime)}.");
-			if (timeSpan.TotalHours > 24d) throw new ArgumentException($"{nameof(endDateTime)} can not be more than 24 hours after the {nameof(startDateTime)}.");
+			if (timeSpan.TotalHours > 24) throw new ArgumentException($"{nameof(endDateTime)} can not be more than 24 hours after the {nameof(startDateTime)}.");
 
 			var parameters = new Dictionary<string, string>();
 			var stationIdKey = parameters.AddStationId(stationId);
@@ -66,7 +69,10 @@ namespace myNOC.WeatherLink
 		public async Task<WeatherDataResponse?> GetHighsAndLows(int stationId, DateOnly date)
 		{
 			var historic = await GetHistoric(stationId, date);
-			return historic?.CalculateHighLow();
+			if (historic == null)
+				return null;
+
+			return _highLowProcessor.CalculateHighLow(historic);
 		}
 	}
 }
