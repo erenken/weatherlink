@@ -15,11 +15,11 @@
 		<DebugSymbols>true</DebugSymbols>
 		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
 		<Title>myNOC.WeatherLink</Title>
-		<Authors>Demiurge Software LLC</Authors>
+		<Authors>myNOC LLC</Authors>
 		<Description>A .NET SDK to Communicate with the WeatherLink v2 API.</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<Copyright>Copyright © Demiurge Software LLC 2022</Copyright>
+		<Copyright>Copyright © myNOC LLC 2023</Copyright>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 		<PackageProjectUrl>https://github.com/erenken/weatherlink</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/erenken/weatherlink</RepositoryUrl>
