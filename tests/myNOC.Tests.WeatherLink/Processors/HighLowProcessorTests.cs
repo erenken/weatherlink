@@ -1,8 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using myNOC.WeatherLink;
 using myNOC.WeatherLink.JsonConverters;
+using myNOC.WeatherLink.Models.Sensors;
 using myNOC.WeatherLink.Processors;
 using myNOC.WeatherLink.Responses;
+using myNOC.WeatherLink.Sensors.Data;
 using System.Text;
 using System.Text.Json;
 
@@ -38,9 +40,14 @@ namespace myNOC.Tests.WeatherLink.Extensions
 
 			//	Act
 			var result = highLowProcessor.CalculateHighLow(response!);
+			var vantage = result.Sensors.FirstOrDefault(x => x?.Type == myNOC.WeatherLink.Models.Sensors.Data.SensorType.VantagePro2Plus
+				&& x.DataStructure == myNOC.WeatherLink.Models.Sensors.Data.DataStructureType.ISSArchiveRecord) as Sensor<VantagePro2PlusArchive>;
 
 			//	Assert
 			Assert.IsNotNull(result);
+			Assert.IsNotNull(vantage);
+			Assert.AreEqual(0.24f, vantage.Data!.First().RainRateHigh_in);
+			Assert.AreEqual(new DateTime(2023, 3, 17, 4, 17, 12, DateTimeKind.Utc), vantage.Data!.First().RainRateHighAt);
 		}
 	}
 }
