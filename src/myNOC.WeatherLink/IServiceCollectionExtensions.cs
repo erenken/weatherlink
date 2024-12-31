@@ -27,10 +27,10 @@ namespace myNOC.WeatherLink
 			services.AddSingleton<IObjectTypeInfoResolver, ObjectTypeInfoResolver>();
 			services.AddSingleton<IHighLowProcessor, HighLowProcessor>();
 
-			services.AddSingleton<IAPIHttpClient, APIHttpClient>();
-			services.AddSingleton(x => new SensorJsonConverterFactory(x.GetRequiredService<ISensorFactory>()));
-
 			services.AddScoped<ISensorFactory, SensorFactory>();
+			services.AddScoped(x => new SensorJsonConverterFactory(x.GetRequiredService<ISensorFactory>()));
+
+			services.AddSingleton<IAPIHttpClient, APIHttpClient>();
 			services.AddScoped<IAPIRepository, APIRepository>();
 			services.AddScoped<IClient, Client>();
 			services.AddAllScoped(typeof(ISensorData));
