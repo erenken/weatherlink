@@ -1,37 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFrameworks>net8.0</TargetFrameworks>
-    <LangVersion>12.0</LangVersion>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-    <PublishRepositoryUrl>true</PublishRepositoryUrl>
-    <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <IncludeSymbols>true</IncludeSymbols>
-    <DebugType>embedded</DebugType>
-    <DebugSymbols>true</DebugSymbols>
-    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
-    <Title>myNOC.WeatherLink</Title>
-    <Authors>myNOC LLC</Authors>
-    <Description>A .NET SDK to Communicate with the WeatherLink v2 API.</Description>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <Copyright>Copyright © myNOC LLC 2023</Copyright>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-  </PropertyGroup>
-  <ItemGroup>
-    <None Include="README.md" Pack="true" PackagePath="\" />
-    <None Include="LICENSE.txt" Pack="true" PackagePath="" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
-    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.1" />
-    <PackageReference Include="System.Text.Json" Version="8.0.3" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net9.0</TargetFrameworks>
+		<LangVersion>13.0</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<DebugType>embedded</DebugType>
+		<DebugSymbols>true</DebugSymbols>
+		<GeneratePackageOnBuild>False</GeneratePackageOnBuild>
+		<Title>myNOC.WeatherLink</Title>
+		<Authors>myNOC LLC</Authors>
+		<Description>A .NET SDK to Communicate with the WeatherLink v2 API.</Description>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<Copyright>Copyright © myNOC LLC 2023</Copyright>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
+		<DebugSymbols>true</DebugSymbols>
+		<DebugType>pdbonly</DebugType>
+		<Optimize>true</Optimize>
+	</PropertyGroup>
+	<ItemGroup>
+		<None Include="README.md" Pack="true" PackagePath="\" />
+		<None Include="LICENSE.txt" Pack="true" PackagePath="" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+		<PackageReference Include="System.Text.Json" Version="9.0.0" />
+	</ItemGroup>
 </Project>
