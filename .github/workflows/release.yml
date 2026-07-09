@@ -9,7 +9,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
       with:
         fetch-depth: 0
 
@@ -24,15 +24,12 @@ jobs:
       with:
         useConfigFile: true        
 
-    - name: Setup .NET Core 8
-      uses: actions/setup-dotnet@v1
+    - name: Setup .NET 8 and 10
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.x
-
-    - name: Setup .NET Core 9
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 9.x
+        dotnet-version: |
+          8.x
+          10.x
 
     - name: Install dependencies
       run: dotnet restore
