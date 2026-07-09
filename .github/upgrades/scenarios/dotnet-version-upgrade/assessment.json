@@ -1,0 +1,1022 @@
+{
+  "settings": {
+    "components": {
+      "code": true,
+      "binaries": false
+    },
+    "targetId": "net10.0",
+    "targetDisplayName": ".NETCoreApp,Version=v10.0"
+  },
+  "analysisStartTime": "2026-07-09T02:09:33.4203053Z",
+  "analysisEndTime": "2026-07-09T02:09:33.8398651Z",
+  "privacyModeHelpUrl": "https://go.microsoft.com/fwlink/?linkid=2270980",
+  "stats": {
+    "summary": {
+      "projects": 3,
+      "issues": 4,
+      "incidents": 33,
+      "effort": 33
+    },
+    "charts": {
+      "severity": {
+        "Mandatory": 5,
+        "Optional": 0,
+        "Potential": 28,
+        "Information": 0
+      },
+      "category": {
+        "NuGet": 9,
+        "Project": 3,
+        "Api": 21
+      }
+    }
+  },
+  "projects": [
+    {
+      "path": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+      "startingProject": true,
+      "issues": 3,
+      "storyPoints": 12,
+      "properties": {
+        "appName": "myNOC.Tests.WeatherLink",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0",
+          "net9.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 12,
+        "numberOfCodeFiles": 9,
+        "linesTotal": 2636,
+        "linesOfCode": 726,
+        "totalApiScanned": 927,
+        "minLinesOfCodeToChange": 8,
+        "maxLinesOfCodeToChange": 8
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "35515b0b-6cba-4086-af23-b8e2601445df",
+          "ruleId": "NuGet.0002",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.DependencyInjection, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.9",
+              "protected": "Microsoft.Extensions.DependencyInjection, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.9"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+            "snippet": "Microsoft.Extensions.DependencyInjection, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.DependencyInjection, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection, and replace with new package Microsoft.Extensions.DependencyInjection 10.0.9",
+            "label": "Microsoft.Extensions.DependencyInjection 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.DependencyInjection",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9cc72c64-9c44-49e0-8f25-cb377425ad5c",
+          "ruleId": "NuGet.0002",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.9",
+              "protected": "Microsoft.Extensions.Logging, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.9"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+            "snippet": "Microsoft.Extensions.Logging, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.Logging, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging, and replace with new package Microsoft.Extensions.Logging 10.0.9",
+            "label": "Microsoft.Extensions.Logging 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "553d336f-3505-4791-aa1b-e80268aa3a78",
+          "ruleId": "NuGet.0002",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9",
+              "protected": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+            "snippet": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9",
+            "label": "Microsoft.Extensions.Logging.Console 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging.Console",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "df78988e-eafc-48fe-835d-a2e02bfc9951",
+          "ruleId": "Project.0002",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+              "protected": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+            "snippet": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+            "protectedSnippet": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0;net9.0",
+              "RecommendedTargetFramework": "net8.0;net9.0;net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "f383e9de-e86a-49d4-9987-e33c88fa4b5e",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.BadRequest)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\API\\APIRepositoryTests.cs",
+            "snippet": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.BadRequest)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 154,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "ea91cf31-2a2f-40cc-8f40-a9e65021f7cc",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_httpMessageHandler.Received().MockSend(Arg.Is\u003CHttpRequestMessage\u003E(r =\u003E r.RequestUri!.ToString().Equals(\u0022https://localhost/v2/current/88769?api-key=testKey\u0026t=12345\u0026\u0022)), Arg.Any\u003CCancellationToken\u003E());",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\API\\APIRepositoryTests.cs",
+            "snippet": "_httpMessageHandler.Received().MockSend(Arg.Is\u003CHttpRequestMessage\u003E(r =\u003E r.RequestUri!.ToString().Equals(\u0022https://localhost/v2/current/88769?api-key=testKey\u0026t=12345\u0026\u0022)), Arg.Any\u003CCancellationToken\u003E());",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 139,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "25f4a362-5481-443e-b5ea-16702040619c",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.OK)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\API\\APIRepositoryTests.cs",
+            "snippet": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.OK)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 122,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "a6937dae-73fd-4a59-a17a-84fae249b2d6",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_httpMessageHandler.Received().MockSend(Arg.Is\u003CHttpRequestMessage\u003E(r =\u003E r.RequestUri!.ToString().Equals(\u0022https://localhost/v2/stations?api-key=testKey\u0026t=12345\u0026\u0022)), Arg.Any\u003CCancellationToken\u003E());",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\API\\APIRepositoryTests.cs",
+            "snippet": "_httpMessageHandler.Received().MockSend(Arg.Is\u003CHttpRequestMessage\u003E(r =\u003E r.RequestUri!.ToString().Equals(\u0022https://localhost/v2/stations?api-key=testKey\u0026t=12345\u0026\u0022)), Arg.Any\u003CCancellationToken\u003E());",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 99,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "064cf5c9-bb21-4cec-8526-5a7fb4483648",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.OK)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\API\\APIRepositoryTests.cs",
+            "snippet": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.OK)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 82,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "10dc77bb-8c3b-44d7-a0e5-872d05a7f25e",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_httpMessageHandler.Received().MockSend(Arg.Is\u003CHttpRequestMessage\u003E(r =\u003E r.RequestUri!.ToString().Equals(\u0022https://localhost/v2/stations?\u0022)), Arg.Any\u003CCancellationToken\u003E());",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\API\\APIRepositoryTests.cs",
+            "snippet": "_httpMessageHandler.Received().MockSend(Arg.Is\u003CHttpRequestMessage\u003E(r =\u003E r.RequestUri!.ToString().Equals(\u0022https://localhost/v2/stations?\u0022)), Arg.Any\u003CCancellationToken\u003E());",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 62,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "8607a568-600a-42fd-8eed-c0a7310e99a4",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.OK)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\API\\APIRepositoryTests.cs",
+            "snippet": "var httpRequestMessage = new HttpResponseMessage(HttpStatusCode.OK)\r\n\t\t\t{\r\n\t\t\t\tContent = new StringContent(JsonSerializer.Serialize(getDataTypeResponse))\r\n\t\t\t};",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 46,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "c24ce54d-94ac-485a-91a6-74193c874ccb",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: Message no longer duplicated in Console log output ",
+          "projectPath": "tests\\myNOC.Tests.WeatherLink\\myNOC.Tests.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "_services.AddLogging(config =\u003E config.AddConsole());",
+              "protected": "M:Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole(Microsoft.Extensions.Logging.ILoggingBuilder)"
+            },
+            "kind": "File",
+            "path": "tests\\myNOC.Tests.WeatherLink\\IServiceCollectionExtensionsTests.cs",
+            "snippet": "_services.AddLogging(config =\u003E config.AddConsole());",
+            "protectedSnippet": "M:Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole(Microsoft.Extensions.Logging.ILoggingBuilder)",
+            "label": "M:Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole(Microsoft.Extensions.Logging.ILoggingBuilder)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/console-json-logging-duplicate-messages.md",
+                "isCustom": false
+              }
+            ],
+            "line": 21,
+            "column": 3
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+      "startingProject": true,
+      "issues": 3,
+      "storyPoints": 15,
+      "properties": {
+        "appName": "myNOC.WeatherLink",
+        "projectKind": "ClassLibrary",
+        "frameworks": [
+          "net8.0",
+          "net9.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 39,
+        "numberOfCodeFiles": 39,
+        "linesTotal": 1367,
+        "linesOfCode": 1367,
+        "totalApiScanned": 2137,
+        "minLinesOfCodeToChange": 10,
+        "maxLinesOfCodeToChange": 10
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "81bb371d-386a-4600-8fda-329eb2d35060",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.DependencyInjection.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.9",
+              "protected": "Microsoft.Extensions.DependencyInjection.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.9"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+            "snippet": "Microsoft.Extensions.DependencyInjection.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.DependencyInjection.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.DependencyInjection.Abstractions, and replace with new package Microsoft.Extensions.DependencyInjection.Abstractions 10.0.9",
+            "label": "Microsoft.Extensions.DependencyInjection.Abstractions 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.DependencyInjection.Abstractions",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "894da10b-7ea1-4ae0-a4b6-61ec41b5d2db",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Http, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Http, and replace with new package Microsoft.Extensions.Http 10.0.9",
+              "protected": "Microsoft.Extensions.Http, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Http, and replace with new package Microsoft.Extensions.Http 10.0.9"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+            "snippet": "Microsoft.Extensions.Http, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Http, and replace with new package Microsoft.Extensions.Http 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.Http, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Http, and replace with new package Microsoft.Extensions.Http 10.0.9",
+            "label": "Microsoft.Extensions.Http 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Http",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "9103ad3f-9707-4d14-96d5-0f5d8d3db527",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.9",
+              "protected": "Microsoft.Extensions.Logging.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.9"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+            "snippet": "Microsoft.Extensions.Logging.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.Logging.Abstractions, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Abstractions, and replace with new package Microsoft.Extensions.Logging.Abstractions 10.0.9",
+            "label": "Microsoft.Extensions.Logging.Abstractions 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging.Abstractions",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "3c2435cb-e357-4a47-96b4-0a9182fe88b3",
+          "ruleId": "NuGet.0002",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "System.Text.Json, 9.0.0\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.9",
+              "protected": "System.Text.Json, 9.0.0\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.9"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+            "snippet": "System.Text.Json, 9.0.0\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.9",
+            "protectedSnippet": "System.Text.Json, 9.0.0\n\nRecommendation:\n\nRemove System.Text.Json, and replace with new package System.Text.Json 10.0.9",
+            "label": "System.Text.Json 9.0.0",
+            "properties": {
+              "PackageId": "System.Text.Json",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "f5259ee6-1a2b-4e47-bb59-3dbc6df1f7ee",
+          "ruleId": "Project.0002",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+              "protected": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+            "snippet": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+            "protectedSnippet": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0;net9.0",
+              "RecommendedTargetFramework": "net8.0;net9.0;net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "39c25559-be70-479e-b827-d020559d61e5",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "httpClient.BaseAddress = new Uri(BaseUri);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIHttpClient.cs",
+            "snippet": "httpClient.BaseAddress = new Uri(BaseUri);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 11,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "399e168d-5483-42ca-8faf-f10607391745",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "httpClient.BaseAddress = new Uri(BaseUri);",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIHttpClient.cs",
+            "snippet": "httpClient.BaseAddress = new Uri(BaseUri);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 11,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "948d870f-de31-438d-bcf8-f71a0a66c84b",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "httpClient.BaseAddress = new Uri(BaseUri);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIHttpClient.cs",
+            "snippet": "httpClient.BaseAddress = new Uri(BaseUri);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 11,
+            "column": 4
+          }
+        },
+        {
+          "incidentId": "2077121d-83f0-406b-91a8-030e1debe23d",
+          "ruleId": "Api.0003",
+          "description": "Breaking change - Streaming HTTP responses enabled by default in browser HTTP clients ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var content = await response.Content.ReadAsStringAsync();",
+              "protected": "T:System.Net.Http.HttpContent"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIRepository.cs",
+            "snippet": "var content = await response.Content.ReadAsStringAsync();",
+            "protectedSnippet": "T:System.Net.Http.HttpContent",
+            "label": "T:System.Net.Http.HttpContent",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/default-http-streaming.md",
+                "isCustom": false
+              }
+            ],
+            "line": 65,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "aaa3601c-648f-44de-99cb-506b0fb669c9",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var uri = new Uri(baseUri, $\u0022{path}/{endPoint}?{queryBuilder}\u0022);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIRepository.cs",
+            "snippet": "var uri = new Uri(baseUri, $\u0022{path}/{endPoint}?{queryBuilder}\u0022);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 59,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "1ea5587c-5b21-4b6b-ac61-42e3efbc6a5d",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var uri = new Uri(baseUri, $\u0022{path}/{endPoint}?{queryBuilder}\u0022);",
+              "protected": "M:System.Uri.#ctor(System.Uri,System.String)"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIRepository.cs",
+            "snippet": "var uri = new Uri(baseUri, $\u0022{path}/{endPoint}?{queryBuilder}\u0022);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.Uri,System.String)",
+            "label": "M:System.Uri.#ctor(System.Uri,System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 59,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "40bfb98a-7c53-4a99-8b7e-c62f947fdc9e",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "string path = baseUri.AbsolutePath.TrimEnd(\u0027/\u0027);",
+              "protected": "P:System.Uri.AbsolutePath"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIRepository.cs",
+            "snippet": "string path = baseUri.AbsolutePath.TrimEnd(\u0027/\u0027);",
+            "protectedSnippet": "P:System.Uri.AbsolutePath",
+            "label": "P:System.Uri.AbsolutePath",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 57,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "44304ac7-6955-40d8-96cf-3365ae6d1cee",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var baseUri = new Uri(_apiHttpClient.BaseUri);",
+              "protected": "T:System.Uri"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIRepository.cs",
+            "snippet": "var baseUri = new Uri(_apiHttpClient.BaseUri);",
+            "protectedSnippet": "T:System.Uri",
+            "label": "T:System.Uri",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 56,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "9fdc75f9-5177-4721-ba7e-28dca23b421d",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: URI length limits removed ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "var baseUri = new Uri(_apiHttpClient.BaseUri);",
+              "protected": "M:System.Uri.#ctor(System.String)"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\API\\APIRepository.cs",
+            "snippet": "var baseUri = new Uri(_apiHttpClient.BaseUri);",
+            "protectedSnippet": "M:System.Uri.#ctor(System.String)",
+            "label": "M:System.Uri.#ctor(System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/10.0/uri-length-limits-removed.md",
+                "isCustom": false
+              }
+            ],
+            "line": 56,
+            "column": 3
+          }
+        },
+        {
+          "incidentId": "dd96f6a4-f600-46f4-8737-680331611406",
+          "ruleId": "Api.0003",
+          "description": "URI query redaction in IHttpClientFactory logs ",
+          "projectPath": "src\\myNOC.WeatherLink\\myNOC.WeatherLink.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "services.AddHttpClient();",
+              "protected": "M:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)"
+            },
+            "kind": "File",
+            "path": "src\\myNOC.WeatherLink\\IServiceCollectionExtensions.cs",
+            "snippet": "services.AddHttpClient();",
+            "protectedSnippet": "M:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)",
+            "label": "M:Microsoft.Extensions.DependencyInjection.HttpClientFactoryServiceCollectionExtensions.AddHttpClient(Microsoft.Extensions.DependencyInjection.IServiceCollection)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/networking/9.0/query-redaction-logs.md",
+                "isCustom": false
+              }
+            ],
+            "line": 17,
+            "column": 3
+          }
+        }
+      ],
+      "features": []
+    },
+    {
+      "path": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+      "startingProject": true,
+      "issues": 4,
+      "storyPoints": 6,
+      "properties": {
+        "appName": "SampleConsoleApp",
+        "projectKind": "DotNetCoreApp",
+        "frameworks": [
+          "net8.0",
+          "net9.0"
+        ],
+        "languages": [
+          "C#"
+        ],
+        "tools": [
+          "MSBuild"
+        ],
+        "isSdkStyle": true,
+        "numberOfFiles": 1,
+        "numberOfCodeFiles": 1,
+        "linesTotal": 45,
+        "linesOfCode": 45,
+        "totalApiScanned": 71,
+        "minLinesOfCodeToChange": 3,
+        "maxLinesOfCodeToChange": 3
+      },
+      "ruleInstances": [
+        {
+          "incidentId": "43d95f32-0bea-4f04-9c01-61e8d0862c8a",
+          "ruleId": "NuGet.0002",
+          "projectPath": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Configuration.EnvironmentVariables, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.EnvironmentVariables, and replace with new package Microsoft.Extensions.Configuration.EnvironmentVariables 10.0.9",
+              "protected": "Microsoft.Extensions.Configuration.EnvironmentVariables, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.EnvironmentVariables, and replace with new package Microsoft.Extensions.Configuration.EnvironmentVariables 10.0.9"
+            },
+            "kind": "File",
+            "path": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+            "snippet": "Microsoft.Extensions.Configuration.EnvironmentVariables, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.EnvironmentVariables, and replace with new package Microsoft.Extensions.Configuration.EnvironmentVariables 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.Configuration.EnvironmentVariables, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Configuration.EnvironmentVariables, and replace with new package Microsoft.Extensions.Configuration.EnvironmentVariables 10.0.9",
+            "label": "Microsoft.Extensions.Configuration.EnvironmentVariables 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Configuration.EnvironmentVariables",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6a8865d4-b782-4aff-aeac-54b425c546d7",
+          "ruleId": "NuGet.0002",
+          "projectPath": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9",
+              "protected": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9"
+            },
+            "kind": "File",
+            "path": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+            "snippet": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9",
+            "protectedSnippet": "Microsoft.Extensions.Logging.Console, 9.0.0\n\nRecommendation:\n\nRemove Microsoft.Extensions.Logging.Console, and replace with new package Microsoft.Extensions.Logging.Console 10.0.9",
+            "label": "Microsoft.Extensions.Logging.Console 9.0.0",
+            "properties": {
+              "PackageId": "Microsoft.Extensions.Logging.Console",
+              "PackageVersion": "9.0.0",
+              "PackageNewVersion": "10.0.9",
+              "PackageReplacements": null
+            }
+          }
+        },
+        {
+          "incidentId": "6deef1d0-5cb2-4a75-9e7b-1d1e0167edc2",
+          "ruleId": "Project.0002",
+          "projectPath": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+              "protected": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0"
+            },
+            "kind": "File",
+            "path": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+            "snippet": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+            "protectedSnippet": "Current target framework: net8.0;net9.0\nRecommended target framework: net8.0;net9.0;net10.0",
+            "properties": {
+              "CurrentTargetFramework": "net8.0;net9.0",
+              "RecommendedTargetFramework": "net8.0;net9.0;net10.0"
+            }
+          }
+        },
+        {
+          "incidentId": "f3e62600-f0d9-409d-9260-313739757e94",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "apiContext.APISecret = config.GetValue\u003Cstring\u003E(\u0022WL_APISECRET\u0022)!;",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)"
+            },
+            "kind": "File",
+            "path": "samples\\SampleConsoleApp\\Program.cs",
+            "snippet": "apiContext.APISecret = config.GetValue\u003Cstring\u003E(\u0022WL_APISECRET\u0022)!;",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 27,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "946d5767-a494-4489-845b-57bc306d0973",
+          "ruleId": "Api.0001",
+          "description": "Breaking change: DynamicallyAccessedMembers annotation removed from trim-unsafe configuration APIs ",
+          "projectPath": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "apiContext.APIKey = config.GetValue\u003Cstring\u003E(\u0022WL_APIKEY\u0022)!;",
+              "protected": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)"
+            },
+            "kind": "File",
+            "path": "samples\\SampleConsoleApp\\Program.cs",
+            "snippet": "apiContext.APIKey = config.GetValue\u003Cstring\u003E(\u0022WL_APIKEY\u0022)!;",
+            "protectedSnippet": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "label": "M:Microsoft.Extensions.Configuration.ConfigurationBinder.GetValue\u0060\u00601(Microsoft.Extensions.Configuration.IConfiguration,System.String)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/dynamically-accessed-members-configuration.md",
+                "isCustom": false
+              }
+            ],
+            "line": 26,
+            "column": 0
+          }
+        },
+        {
+          "incidentId": "df9fe30a-1c8a-47d9-b285-2e30e8322878",
+          "ruleId": "Api.0003",
+          "description": "Breaking change: Message no longer duplicated in Console log output ",
+          "projectPath": "samples\\SampleConsoleApp\\SampleConsoleApp.csproj",
+          "state": "Active",
+          "location": {
+            "snippetModel": {
+              "unrestricted": "services.AddLogging(options =\u003E options.AddConsole());",
+              "protected": "M:Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole(Microsoft.Extensions.Logging.ILoggingBuilder)"
+            },
+            "kind": "File",
+            "path": "samples\\SampleConsoleApp\\Program.cs",
+            "snippet": "services.AddLogging(options =\u003E options.AddConsole());",
+            "protectedSnippet": "M:Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole(Microsoft.Extensions.Logging.ILoggingBuilder)",
+            "label": "M:Microsoft.Extensions.Logging.ConsoleLoggerExtensions.AddConsole(Microsoft.Extensions.Logging.ILoggingBuilder)",
+            "links": [
+              {
+                "title": "API documentation",
+                "url": "https://github.com/dotnet/docs/blob/main/docs/core/compatibility/extensions/10.0/console-json-logging-duplicate-messages.md",
+                "isCustom": false
+              }
+            ],
+            "line": 18,
+            "column": 0
+          }
+        }
+      ],
+      "features": []
+    }
+  ],
+  "rules": {
+    "NuGet.0002": {
+      "id": "NuGet.0002",
+      "isFeature": false,
+      "description": "NuGet package upgrade is recommended for selected target framework.\n\nStandard .NET packages are recommended to have versions matching version of .NET that project targets.\n\nSome other packages also are known to work better for selected target frameworks.",
+      "label": "NuGet package upgrade is recommended",
+      "severity": "Potential",
+      "effort": 1,
+      "links": [
+        {
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262530",
+          "isCustom": false
+        }
+      ]
+    },
+    "Project.0002": {
+      "id": "Project.0002",
+      "isFeature": false,
+      "description": "Project\u0027s target framework(s) needs to be changed to the new target framework that you selected for this upgrade.\n\nDuring upgrade target framework will be adjusted to corresponding platform when applicable. In some cases project would result in multiple target frameworks after the upgrade if it was using features that now have their own platforms in modern .NET frameworks (windows, iOS, Android etc).",
+      "label": "Project\u0027s target framework(s) needs to be changed",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Overview of porting from .NET Framework to .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265227",
+          "isCustom": false
+        },
+        {
+          "title": ".NET project SDKs",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2265226",
+          "isCustom": false
+        }
+      ]
+    },
+    "Api.0003": {
+      "id": "Api.0003",
+      "isFeature": false,
+      "description": "API has a behavioral change in selected .NET version: code and binaries may behave differently at runtime without needing recompilation, but the new behavior might be undesirable and require updates.",
+      "label": "Behavioral change in selected .NET version",
+      "severity": "Potential",
+      "effort": 1
+    },
+    "Api.0001": {
+      "id": "Api.0001",
+      "isFeature": false,
+      "description": "API is binary incompatible for selected .NET version: affects existing binaries, often requiring recompilation, because the API has changed in a way that prevents older binaries from loading or executing.",
+      "label": "Binary incompatible for selected .NET version",
+      "severity": "Mandatory",
+      "effort": 1,
+      "links": [
+        {
+          "title": "Breaking changes in .NET",
+          "url": "https://go.microsoft.com/fwlink/?linkid=2262679",
+          "isCustom": false
+        }
+      ]
+    }
+  }
+}
