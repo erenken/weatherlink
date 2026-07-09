@@ -4,6 +4,10 @@
 
 A library for communicating with the [WeatherLink v2 API](https://weatherlink.github.io/v2-api/).
 
+## Requirements
+
+- .NET 8.0 (LTS) or .NET 10.0
+
 This library is initially built for my needs as I am building a new Weather Website form my station, and in the process I thought this library may be useful to more people.
 
 ## Supported Data Structures

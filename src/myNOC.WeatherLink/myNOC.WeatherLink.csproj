@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
-		<LangVersion>13.0</LangVersion>
+		<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+		<LangVersion>latest</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
@@ -16,7 +16,7 @@
 		<Description>A .NET SDK to Communicate with the WeatherLink v2 API.</Description>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-		<Copyright>Copyright © myNOC LLC 2023</Copyright>
+		<Copyright>Copyright © myNOC LLC 2026</Copyright>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">

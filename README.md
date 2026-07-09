@@ -5,6 +5,10 @@
 
 A library for communicating with the [WeatherLink v2 API](https://weatherlink.github.io/v2-api/).
 
+## Requirements
+
+- .NET 8.0 (LTS) or .NET 10.0
+
 ## nuget.org
 
 For installation instructions please to to [myNOC.WeatherLink](https://www.nuget.org/packages/myNOC.WeatherLink/) at [nuget.org](https://nuget.org).
