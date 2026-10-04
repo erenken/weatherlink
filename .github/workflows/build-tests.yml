@@ -4,30 +4,83 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    branches-ignore: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   build-test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7.0.1
+      with:
+        fetch-depth: 0
+        persist-credentials: false
 
     - name: Setup .NET 8 and 10
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6.0.0
       with:
         dotnet-version: |
-          8.x
-          10.x
+          8.0.x
+          10.0.x
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v4.7.0
+      with:
+        versionSpec: '6.8.2'
+
+    - name: Determine version
+      id: gitversion
+      uses: gittools/actions/gitversion/execute@v4.7.0
+      with:
+        configFilePath: GitVersion.yml
 
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore myNOC.WeatherLink.sln --warnaserror
 
     - name: Build
-      run: dotnet build --no-restore
+      env:
+        VERSION: ${{ steps.gitversion.outputs.semVer }}
+        ASSEMBLY_VERSION: ${{ steps.gitversion.outputs.assemblySemVer }}
+        FILE_VERSION: ${{ steps.gitversion.outputs.assemblySemFileVer }}
+        INFORMATIONAL_VERSION: ${{ steps.gitversion.outputs.informationalVersion }}
+      run: >-
+        dotnet build myNOC.WeatherLink.sln --configuration Release --no-restore --warnaserror
+        -p:Version="$VERSION" -p:AssemblyVersion="$ASSEMBLY_VERSION"
+        -p:FileVersion="$FILE_VERSION" -p:InformationalVersion="$INFORMATIONAL_VERSION"
+        -p:IncludeSourceRevisionInInformationalVersion=false
+        -p:PackageVersion="$VERSION" -p:ContinuousIntegrationBuild=true
 
     - name: Test
-      run: dotnet test --no-restore --verbosity normal --logger trx --collect:"XPlat Code Coverage" --no-build
+      run: dotnet test myNOC.WeatherLink.sln --configuration Release --no-restore --logger trx --collect:"XPlat Code Coverage" --no-build --results-directory TestResults
+
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v7.0.1
+      with:
+        name: build-test-results
+        path: TestResults/
+        if-no-files-found: ignore
     
     - name: Test Pack nuget
+      env:
+        VERSION: ${{ steps.gitversion.outputs.semVer }}
+      run: >-
+        dotnet pack src/myNOC.WeatherLink/myNOC.WeatherLink.csproj
+        --configuration Release --no-build --no-restore --warnaserror --include-symbols
+        --output .pack -p:PackageVersion="$VERSION" -p:ContinuousIntegrationBuild=true
+
+    - name: Validate packaged Source Link
+      env:
+        VERSION: ${{ steps.gitversion.outputs.semVer }}
+        DOTNET_ROLL_FORWARD: Major
       run: |
-         dotnet pack --no-build --no-restore --include-symbols --verbosity normal --configuration Debug
+        dotnet tool install sourcelink --tool-path "$RUNNER_TEMP/sourcelink" --version 3.1.1
+        unzip -q ".pack/myNOC.WeatherLink.$VERSION.snupkg" -d "$RUNNER_TEMP/sourcelink-symbols"
+        for framework in net8.0 net10.0; do
+          "$RUNNER_TEMP/sourcelink/sourcelink" test "$RUNNER_TEMP/sourcelink-symbols/lib/$framework/myNOC.WeatherLink.pdb"
+        done
       

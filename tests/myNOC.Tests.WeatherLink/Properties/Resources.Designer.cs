@@ -59,25 +59,5 @@ namespace myNOC.Tests.WeatherLink.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] CurrentWeather {
-            get {
-                object obj = ResourceManager.GetObject("CurrentWeather", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] HistoricWeather {
-            get {
-                object obj = ResourceManager.GetObject("HistoricWeather", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

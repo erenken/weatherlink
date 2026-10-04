@@ -51,7 +51,7 @@ namespace myNOC.Tests.WeatherLink.JsonConverters
 		public void Deserialize_CurrentJson_ReturnCurrent()
 		{
 			//	Assemble
-			var currentWeatherJson = Encoding.UTF8.GetString(Properties.Resources.CurrentWeather);
+			var currentWeatherJson = Encoding.UTF8.GetString((byte[])Properties.Resources.ResourceManager.GetObject("CurrentWeather")!);
 
 			JsonSerializerOptions options = new();
 			options.Converters.Add(_sensorJsonConverterFactory);

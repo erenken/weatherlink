@@ -29,7 +29,7 @@ namespace myNOC.Tests.WeatherLink.Extensions
 		public void CalculateHighLowTest()
 		{
 			//	Assemble
-			var historicWeatherJson = Encoding.UTF8.GetString(Properties.Resources.HistoricWeather);
+			var historicWeatherJson = Encoding.UTF8.GetString((byte[])Properties.Resources.ResourceManager.GetObject("HistoricWeather")!);
 
 			JsonSerializerOptions options = new();
 			options.Converters.Add(_serviceProvider.GetRequiredService<SensorJsonConverterFactory>());
