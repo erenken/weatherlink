@@ -1,23 +1,25 @@
+# GitVersion 6 configuration for main releases and work/* previews.
+workflow: GitHubFlow/v1
+tag-prefix: '[vV]?'
 branches:
   main:
     regex: ^main$
-    mode: ContinuousDelivery
-    tag: ''
-    increment: Patch
-    prevent-increment-of-merged-branch-version: true
-    track-merge-target: false
-    source-branches: [ 'work' ]
-    tracks-release-branches: true
-    is-mainline: true
-  work:
-    regex: ^work?[/-]
     mode: ContinuousDeployment
-    tag: alpha
+    label: ''
+    increment: Patch
+    prevent-increment:
+      of-merged-branch: true
+    is-main-branch: true
+  work:
+    regex: ^work[/-](?<BranchName>.+)$
+    mode: ContinuousDelivery
+    label: alpha
     increment: Minor
-    prevent-increment-of-merged-branch-version: false
+    prevent-increment:
+      of-merged-branch: false
     track-merge-target: true
-    source-branches: []
-    tracks-release-branches: true
+    source-branches: [main]
+    is-source-branch-for: [pull-request]
     is-release-branch: false
-    is-mainline: false
+    is-main-branch: false
     pre-release-weight: 0

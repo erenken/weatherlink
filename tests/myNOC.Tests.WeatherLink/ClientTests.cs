@@ -114,7 +114,6 @@ namespace myNOC.Tests.WeatherLink
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
 		public async Task Client_GetArchive_StartGreaterThanEnd_ThrowsException()
 		{
 			//	Assemble
@@ -135,15 +134,11 @@ namespace myNOC.Tests.WeatherLink
 
 			_apiRepository.GetData<WeatherDataResponse>($"historic/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(historicResponse);
 
-			//	Act
-			var result = await _client.GetHistoric(stationId, startDate, endDate);
-
-			//	Assert
-			//	Throws Exception
+			// Act & Assert
+			await Assert.ThrowsExactlyAsync<ArgumentException>(() => _client.GetHistoric(stationId, startDate, endDate));
 		}
 
 		[TestMethod]
-		[ExpectedException(typeof(ArgumentException))]
 		public async Task Client_GetArchive_StartEndGreaterThan24Hours_ThrowsException()
 		{
 			//	Assemble
@@ -164,11 +159,8 @@ namespace myNOC.Tests.WeatherLink
 
 			_apiRepository.GetData<WeatherDataResponse>($"historic/{stationId}", Arg.Any<IEnumerable<KeyValuePair<string, string>>?>(), Arg.Any<IEnumerable<string>?>()).Returns(historicResponse);
 
-			//	Act
-			var result = await _client.GetHistoric(stationId, startDate, endDate);
-
-			//	Assert
-			//	Throws Exception
+			// Act & Assert
+			await Assert.ThrowsExactlyAsync<ArgumentException>(() => _client.GetHistoric(stationId, startDate, endDate));
 		}
 	}
 }
