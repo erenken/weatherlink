@@ -18,7 +18,7 @@ Install the latest stable package from [NuGet](https://www.nuget.org/packages/my
 dotnet add package myNOC.WeatherLink
 ```
 
-The package supports both .NET 8 and .NET 10. Stable releases are published from `main` after both targets build and their tests pass. CI calculates package and assembly versions automatically with GitVersion and creates a matching GitHub release tag. Work branches use `alpha` preview versions for validation. See the [repository's versioning and release documentation](https://github.com/erenken/weatherlink/blob/main/README.md#automatic-versioning) for increment rules and NuGet Trusted Publishing setup.
+The package supports both .NET 10 and .NET 11. Stable releases are published from `main` after both targets build and their tests pass. CI calculates package and assembly versions automatically with GitVersion and creates a matching GitHub release tag. Work branches use `alpha` preview versions for validation. See the [repository's versioning and release documentation](https://github.com/erenken/weatherlink/blob/main/README.md#automatic-versioning) for increment rules and NuGet Trusted Publishing setup.
 
 ## Debugging with Source Link
 

@@ -7,7 +7,7 @@ A library for communicating with the [WeatherLink v2 API](https://weatherlink.gi
 
 ## Requirements
 
-- .NET 8.0 or .NET 10.0 (both LTS)
+- .NET 10.0 (LTS) or .NET 11.0 (STS)
 
 ## Installation
 
@@ -23,15 +23,15 @@ The documentation for the library can be found [here](./src/myNOC.WeatherLink/RE
 
 ## Build and release
 
-Use the latest stable .NET 10 SDK, with the .NET 8 runtime installed to run both test targets:
+Use the latest stable .NET 11 SDK to build and test both targets:
 
 ```sh
-dotnet restore myNOC.WeatherLink.sln --warnaserror
-dotnet build myNOC.WeatherLink.sln --configuration Release --no-restore --warnaserror
-dotnet test myNOC.WeatherLink.sln --configuration Release --no-build --no-restore
+dotnet restore myNOC.WeatherLink.slnx --warnaserror
+dotnet build myNOC.WeatherLink.slnx --configuration Release --no-restore --warnaserror
+dotnet test myNOC.WeatherLink.slnx --configuration Release --no-build --no-restore
 ```
 
-The [Build and Test workflow](.github/workflows/build-tests.yml) runs for pull requests targeting `main`, pushes to other branches, and manual runs. The [Release workflow](.github/workflows/release.yml) runs on pushes to `main` and can also be run manually on `main`. Both workflows build and test .NET 8 and .NET 10, calculate versions with GitVersion 6.8.2, and pack the library and portable symbols. Only the release workflow publishes to NuGet and creates a GitHub release at the tested commit.
+The [Build and Test workflow](.github/workflows/build-tests.yml) runs for pull requests targeting `main`, pushes to other branches, and manual runs. The [Release workflow](.github/workflows/release.yml) runs on pushes to `main` and can also be run manually on `main`. Both workflows build and test .NET 10 and .NET 11, calculate versions with GitVersion 6.8.2, and pack the library and portable symbols. Only the release workflow publishes to NuGet and creates a GitHub release at the tested commit.
 
 Both workflows treat restore, build, and packaging warnings as errors, so a warning blocks publishing.
 
@@ -59,7 +59,7 @@ To request a different release increment, include `+semver: minor` or `+semver: 
 
 The library uses the [Source Link support included in the .NET SDK](https://github.com/dotnet/sourcelink#using-source-link-in-net-projects). Deterministic builds produce portable PDBs with GitHub source mappings pinned to the exact build commit. The NuGet manifest includes the repository URL and commit, and generated or untracked source files are embedded in the PDBs.
 
-The `.snupkg` contains symbols for both .NET 8 and .NET 10. Both workflows extract this final symbol package and run `sourcelink test` on each PDB to download the mapped sources and verify their checksums. A failed check blocks publishing. The pinned Source Link CLI runs from a temporary runner directory with runtime roll-forward enabled; it is not a package dependency for consumers.
+The `.snupkg` contains symbols for both .NET 10 and .NET 11. Both workflows extract this final symbol package and run `sourcelink test` on each PDB to download the mapped sources and verify their checksums. A failed check blocks publishing. The pinned Source Link CLI runs from a temporary runner directory with runtime roll-forward enabled; it is not a package dependency for consumers.
 
 Local packages built from an unpushed commit cannot download that commit's source from GitHub until it is pushed. The CI check runs against the checked-out GitHub commit. See the [package README's debugging instructions](src/myNOC.WeatherLink/README.md#debugging-with-source-link) for symbol server setup.
 
