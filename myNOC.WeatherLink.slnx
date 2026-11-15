@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/.github/" />
+  <Folder Name="/.github/workflows/">
+    <File Path=".github/workflows/build-tests.yml" />
+    <File Path=".github/workflows/release.yml" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/SampleConsoleApp/SampleConsoleApp.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/myNOC.WeatherLink/myNOC.WeatherLink.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/myNOC.Tests.WeatherLink/myNOC.Tests.WeatherLink.csproj" />
+  </Folder>
+</Solution>
