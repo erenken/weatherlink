@@ -6,7 +6,7 @@ A library for communicating with the [WeatherLink v2 API](https://weatherlink.gi
 
 ## Requirements
 
-- .NET 8.0 or .NET 10.0 (both LTS)
+- .NET 10.0 (LTS) or .NET 11.0 (STS)
 
 This library was built for a weather website using a personal station and is available for other WeatherLink integrations.
 
@@ -22,7 +22,7 @@ The package supports both .NET 10 and .NET 11. Stable releases are published fro
 
 ## Debugging with Source Link
 
-NuGet releases include a separate `.snupkg` with portable symbols for .NET 8 and .NET 10. Source Link maps the library's source files to the exact GitHub commit used to build the package, allowing a debugger to download the matching source. The release pipeline verifies source downloads and checksums before publishing.
+NuGet releases include a separate `.snupkg` with portable symbols for .NET 10 and .NET 11. Source Link maps the library's source files to the exact GitHub commit used to build the package, allowing a debugger to download the matching source. The release pipeline verifies source downloads and checksums before publishing.
 
 In Visual Studio:
 

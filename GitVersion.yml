@@ -1,6 +1,8 @@
 # GitVersion 6 configuration for main releases and work/* previews.
 workflow: GitHubFlow/v1
 tag-prefix: '[vV]?'
+# One-time override: 1.0.0 was published in error; skip to 1.0.1 and remove after tagging.
+next-version: 1.0.1
 branches:
   main:
     regex: ^main$
@@ -9,6 +11,7 @@ branches:
     increment: Patch
     prevent-increment:
       of-merged-branch: true
+    commit-message-incrementing: Enabled
     is-main-branch: true
   work:
     regex: ^work[/-](?<BranchName>.+)$
@@ -18,6 +21,7 @@ branches:
     prevent-increment:
       of-merged-branch: false
     track-merge-target: true
+    commit-message-incrementing: Enabled
     source-branches: [main]
     is-source-branch-for: [pull-request]
     is-release-branch: false

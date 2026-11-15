@@ -51,6 +51,8 @@ Versions are stamped into build artifacts during CI; the pipelines do not rewrit
 
 On `main`, the default increment is a patch and the version has no prerelease label. The release workflow rejects any calculated version that is not a stable `major.minor.patch` before building or publishing. For example, after a release tagged `v1.2.3`, the next ordinary change builds and publishes `1.2.4`; the release workflow creates `v1.2.4`, which anchors the following increment. A rerun of an already tagged commit keeps its existing version. Publishing skips duplicate packages and existing GitHub releases.
 
+The next stable version is pinned to `1.0.1` in [GitVersion.yml](GitVersion.yml) because `1.0.0` was published in error and must not be reused. This is a one-time `next-version` override; remove it after `v1.0.1` is tagged so subsequent releases use Git tags and commit-message increments.
+
 Branches named `work/*` or `work-*` produce `alpha` previews with a minor increment, such as `1.3.0-alpha.2`. Other branches and pull requests use GitHubFlow's branch or pull-request labels. These pipelines pack previews for validation but do not publish them. A work branch's minor preview version does not itself request a minor release on `main`.
 
 To request a different release increment, include `+semver: minor` or `+semver: major` in a commit message that reaches `main`. With squash merges, include the directive in the final squash commit message. GitVersion also recognizes `+semver: patch`. See [GitVersion's version incrementing documentation](https://gitversion.net/docs/reference/version-increments).
